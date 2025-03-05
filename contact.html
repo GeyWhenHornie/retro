@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact RetroChronicles for inquiries, collaborations, or feedback.">
+    <meta name="keywords" content="Contact, Retro Blog, Email">
+    <meta name="author" content="Your Name">
+    <title>Contact - RetroChronicles</title>
+    
+    <style>
+        /* Windows 98 Style */
+        body {
+            font-family: "MS Sans Serif", sans-serif;
+            background-color: #c0c0c0;
+            color: black;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .window {
+            width: 90%;
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            border: 2px solid black;
+            box-shadow: 3px 3px black;
+            padding: 10px;
+        }
+        .title-bar {
+            background: navy;
+            color: white;
+            text-align: left;
+            padding: 5px;
+            font-weight: bold;
+        }
+        .menu {
+            background: silver;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 14px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: black;
+            padding: 3px 8px;
+            border: 2px outset white;
+        }
+        .menu a:hover {
+            border: 2px inset white;
+            background: #ddd;
+        }
+        .content {
+            padding: 15px;
+            text-align: left;
+        }
+        .email-box {
+            background: silver;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            border: 2px inset white;
+            margin-top: 10px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            background: silver;
+            padding: 5px;
+            border-top: 2px solid black;
+        }
+        /* Mobile Friendly */
+        @media (max-width: 600px) {
+            .menu {
+                flex-direction: column;
+                text-align: center;
+            }
+            .menu a {
+                margin: 5px 0;
+            }
+        }
+    </style>
+
+    <script>
+        // Disable Right-Click
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
+
+        // Disable Text Copy
+        document.addEventListener("copy", function (e) {
+            e.preventDefault();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="window">
+        <div class="title-bar">Contact - RetroChronicles</div>
+        
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="content">
+            <h2>Contact Us</h2>
+            <p>For inquiries, collaborations, or feedback, reach out to us via email:</p>
+            <div class="email-box">
+                <p>Email: <a href="mailto:contact@retrochronicles.com">contact@retrochronicles.com</a></p>
+            </div>
+            <p>We usually respond within 24-48 hours.</p>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 RetroChronicles. All Rights Reserved.
+        </div>
+    </div>
+</body>
+</html>

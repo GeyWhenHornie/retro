@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore detailed blogs on vintage tech, Windows 98 nostalgia, and early internet culture.">
+    <meta name="keywords" content="Retro Blog, Windows 98, Early Internet, Vintage Technology">
+    <meta name="author" content="Your Name">
+    <title>Blog - RetroChronicles</title>
+    
+    <style>
+        /* Windows 98 Style */
+        body {
+            font-family: "MS Sans Serif", sans-serif;
+            background-color: #c0c0c0;
+            color: black;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .window {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border: 2px solid black;
+            box-shadow: 3px 3px black;
+            padding: 10px;
+        }
+        .title-bar {
+            background: navy;
+            color: white;
+            text-align: left;
+            padding: 5px;
+            font-weight: bold;
+        }
+        .menu {
+            background: silver;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 14px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: black;
+            padding: 3px 8px;
+            border: 2px outset white;
+        }
+        .menu a:hover {
+            border: 2px inset white;
+            background: #ddd;
+        }
+        .content {
+            padding: 15px;
+            text-align: left;
+        }
+        .blog-post {
+            border-bottom: 2px solid silver;
+            padding: 10px 0;
+        }
+        .blog-post h2 {
+            margin-bottom: 5px;
+        }
+        .blog-post img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border: 2px solid black;
+            background: gray;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            background: silver;
+            padding: 5px;
+            border-top: 2px solid black;
+        }
+        /* Mobile Friendly */
+        @media (max-width: 600px) {
+            .menu {
+                flex-direction: column;
+                text-align: center;
+            }
+            .menu a {
+                margin: 5px 0;
+            }
+        }
+    </style>
+    
+    <script>
+        // Disable Right-Click
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
+
+        // Disable Text Copy
+        document.addEventListener("copy", function (e) {
+            e.preventDefault();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="window">
+        <div class="title-bar">Blog - RetroChronicles</div>
+        
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="content">
+            <h2>Our Latest Blogs</h2>
+
+            <div class="blog-post">
+                <h2>The Rise and Fall of Windows 98</h2>
+                <img src="placeholder.jpg" alt="Windows 98 Classic UI">
+                <p>Windows 98 was one of Microsoft's most iconic operating systems, launched in 1998 as an upgrade to Windows 95. It introduced many features we take for granted today, including USB support, the improved Start Menu, and Internet Explorer 5.</p>
+                <p>Despite its innovations, Windows 98 had its fair share of flaws. The infamous Blue Screen of Death (BSOD) was a common sight, and users often had to deal with system crashes. However, for many, Windows 98 remains a nostalgic memory—a time when computing was simpler yet exciting.</p>
+                <p>Many users still create retro builds today, reviving Windows 98 for its simplicity and lightweight design. If you're interested in running Windows 98 in 2025, you can use virtual machines or find old hardware to relive the experience.</p>
+                <p><strong>Published by Author (CEO)</strong></p>
+            </div>
+
+            <div class="blog-post">
+                <h2>How Dial-Up Internet Changed the World</h2>
+                <img src="placeholder.jpg" alt="Dial-up Modem">
+                <p>Before high-speed broadband and Wi-Fi, there was **dial-up internet**. A loud, screeching sound followed by a slow connection was the norm in the 90s. Speeds were limited to **56kbps**, making even loading a webpage a challenge.</p>
+                <p>Despite its slow speeds, dial-up internet was revolutionary. It allowed people to connect globally for the first time. Websites like Yahoo, AOL, and MSN Messenger became the foundation of online communication.</p>
+                <p>While dial-up is obsolete today, it paved the way for modern internet services. Many early internet users still remember waiting minutes just for a single image to load. It was frustrating but exciting at the same time.</p>
+                <p><strong>Published by Author (CEO)</strong></p>
+            </div>
+
+            <div class="blog-post">
+                <h2>Retro Web Design: Why Simple is Better</h2>
+                <img src="placeholder.jpg" alt="Old-School Website">
+                <p>Modern websites are flashy and filled with animations, but is that really better? Back in the early 2000s, websites were **simple, lightweight, and functional**. No unnecessary pop-ups, no aggressive tracking—just pure content.</p>
+                <p>Retro web design focuses on usability and accessibility. Websites were made to be **fast** and **responsive**, even on slow connections. Many developers today are returning to this philosophy, creating minimalist sites that load instantly.</p>
+                <p>While new web technologies have their benefits, sometimes **less is more**. A simple, well-structured website can improve user experience and bring back the essence of the early web.</p>
+                <p><strong>Published by Author (CEO)</strong></p>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 RetroChronicles. All Rights Reserved.
+        </div>
+    </div>
+</body>
+</html>

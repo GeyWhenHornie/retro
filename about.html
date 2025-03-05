@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About RetroChronicles - Learn more about our mission and the nostalgia behind our vintage blog.">
+    <meta name="keywords" content="Windows 98, Retro Blog, About Us, Vintage Web">
+    <meta name="author" content="Your Name">
+    <title>About - RetroChronicles</title>
+    
+    <style>
+        /* Windows 98 Style */
+        body {
+            font-family: "MS Sans Serif", sans-serif;
+            background-color: #c0c0c0;
+            color: black;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .window {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border: 2px solid black;
+            box-shadow: 3px 3px black;
+            padding: 10px;
+        }
+        .title-bar {
+            background: navy;
+            color: white;
+            text-align: left;
+            padding: 5px;
+            font-weight: bold;
+        }
+        .menu {
+            background: silver;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 14px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: black;
+            padding: 3px 8px;
+            border: 2px outset white;
+        }
+        .menu a:hover {
+            border: 2px inset white;
+            background: #ddd;
+        }
+        .content {
+            padding: 15px;
+            text-align: left;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            background: silver;
+            padding: 5px;
+            border-top: 2px solid black;
+        }
+        /* Mobile Friendly */
+        @media (max-width: 600px) {
+            .menu {
+                flex-direction: column;
+                text-align: center;
+            }
+            .menu a {
+                margin: 5px 0;
+            }
+        }
+    </style>
+    
+    <script>
+        // Disable Right-Click
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
+
+        // Disable Text Copy
+        document.addEventListener("copy", function (e) {
+            e.preventDefault();
+        });
+    </script>
+</head>
+
+<body>
+    <div class="window">
+        <div class="title-bar">About - RetroChronicles</div>
+        
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="content">
+            <h2>About RetroChronicles</h2>
+            <p>RetroChronicles is a nostalgic journey back to the golden days of the internet. Our blog captures the aesthetics of Windows 98 while delivering engaging content about technology, history, and classic web experiences.</p>
+            
+            <h3>Why This Blog?</h3>
+            <p>With modern websites becoming too complex, we wanted to bring back the simple yet charming feel of the early web. This blog is designed with a Windows 98 theme to recreate that era.</p>
+
+            <h3>What You'll Find Here</h3>
+            <ul>
+                <li>Articles on vintage technology and forgotten web trends.</li>
+                <li>Stories about old-school internet culture.</li>
+                <li>Tips on recreating retro web designs.</li>
+            </ul>
+
+            <p>Enjoy browsing through our collection and step back into the past with us!</p>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 RetroChronicles. All Rights Reserved.
+        </div>
+    </div>
+</body>
+</html>

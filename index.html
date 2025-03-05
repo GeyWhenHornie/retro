@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RetroChronicles - A Vintage Blog bringing back the nostalgic 90s web experience.">
+    <meta name="keywords" content="Windows 98, Retro Blog, Vintage Web, Classic Design">
+    <meta name="author" content="Your Name">
+    <title>RetroChronicles - A Vintage Blog</title>
+    
+    <style>
+        /* Windows 98 Style */
+        body {
+            font-family: "MS Sans Serif", sans-serif;
+            background-color: #c0c0c0;
+            color: black;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .window {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border: 2px solid black;
+            box-shadow: 3px 3px black;
+            padding: 10px;
+        }
+        .title-bar {
+            background: navy;
+            color: white;
+            text-align: left;
+            padding: 5px;
+            font-weight: bold;
+        }
+        .menu {
+            background: silver;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            font-size: 14px;
+        }
+        .menu a {
+            text-decoration: none;
+            color: black;
+            padding: 3px 8px;
+            border: 2px outset white;
+        }
+        .menu a:hover {
+            border: 2px inset white;
+            background: #ddd;
+        }
+        .content {
+            padding: 15px;
+            text-align: left;
+        }
+        input[type="text"], button {
+            font-size: 14px;
+            padding: 5px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            background: silver;
+            padding: 5px;
+            border-top: 2px solid black;
+        }
+        /* Mobile Friendly */
+        @media (max-width: 600px) {
+            .menu {
+                flex-direction: column;
+                text-align: center;
+            }
+            .menu a {
+                margin: 5px 0;
+            }
+        }
+    </style>
+    
+    <script>
+        // Disable Right-Click
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
+
+        // Disable Text Copy
+        document.addEventListener("copy", function (e) {
+            e.preventDefault();
+        });
+
+        function searchPages() {
+            var query = document.getElementById("searchBox").value.toLowerCase();
+            var pages = {
+                "home": "index.html",
+                "about": "about.html",
+                "blog": "blog.html",
+                "contact": "contact.html"
+            };
+            if (pages[query]) {
+                window.location.href = pages[query];
+            } else {
+                alert("Page not found!");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="window">
+        <div class="title-bar">RetroChronicles - A Vintage Blog</div>
+        
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="content">
+            <h2>Welcome to RetroChronicles!</h2>
+            <p>Experience the nostalgia of the early web with our vintage blog, bringing back the aesthetics of Windows 98.</p>
+            <p>Explore our content, where we dive deep into technology, history, and classic web design.</p>
+            
+            <h3>Search Pages</h3>
+            <input type="text" id="searchBox" placeholder="Type: home, about, blog, contact">
+            <button onclick="searchPages()">Search</button>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 RetroChronicles. All Rights Reserved.
+        </div>
+    </div>
+</body>
+</html>

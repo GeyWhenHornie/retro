@@ -6,7 +6,7 @@
     <meta name="description" content="RetroChronicles - A Vintage Blog bringing back the nostalgic 90s web experience.">
     <meta name="keywords" content="Windows 98, Retro Blog, Vintage Web, Classic Design">
     <meta name="author" content="Your Name">
-    <title>RetroChronicles - A Vintage Blog</title>
+    <title>Samware95</title>
     
     <style>
         /* Windows 98 Style */
@@ -59,6 +59,17 @@
             font-size: 14px;
             padding: 5px;
         }
+
+        .whatsapp-box {
+            background: silver;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            border: 2px inset white;
+            margin-top: 10px;
+        }
+
         .footer {
             margin-top: 20px;
             font-size: 12px;
@@ -66,7 +77,16 @@
             padding: 5px;
             border-top: 2px solid black;
         }
-        /* Mobile Friendly */
+        .terminal-box {
+            background-color: #000;
+            color: #0f0;
+            font-family: "Courier New", monospace;
+            padding: 15px;
+            margin-top: 20px;
+            border: 2px inset #0f0;
+            text-align: left;
+            white-space: pre-wrap;
+        }
         @media (max-width: 600px) {
             .menu {
                 flex-direction: column;
@@ -108,7 +128,7 @@
 
 <body>
     <div class="window">
-        <div class="title-bar">RetroChronicles - A Vintage Blog</div>
+        <div class="title-bar">Samware95 - A Homepage for SamBot</div>
         
         <div class="menu">
             <a href="index.html">Home</a>
@@ -118,17 +138,31 @@
         </div>
 
         <div class="content">
-            <h2>Welcome to RetroChronicles!</h2>
-            <p>Experience the nostalgia of the early web with our vintage blog, bringing back the aesthetics of Windows 98.</p>
-            <p>Explore our content, where we dive deep into technology, history, and classic web design.</p>
-            
+            <h2>Welcome to Samware95!</h2>
+            <p>Welcome to Sam Bot, your personal chatbot on WhatsApp — now upgraded with retro flair and powerful commands to make life easier and way more fun!</p>
+        
+            <div class="terminal-box">
+                <h3 style="color: #0ff;">How to Get Started:</h3>
+                Just drop a message:
+                <pre><code>!bot</code></pre>
+                ...to start your session.
+
+                Or type:
+                <pre><code>.help</code></pre>
+                ...to reveal the full arsenal of commands.
+            </div>
+        </div>
+
+        <div class="whatsapp-box">
+            WhatsApp: <a href="https://wa.me/+917599920290" target="_blank">Click to Chat with Sam Bot</a>
+        </div>
+
             <h3>Search Pages</h3>
             <input type="text" id="searchBox" placeholder="Type: home, about, blog, contact">
             <button onclick="searchPages()">Search</button>
-        </div>
 
         <div class="footer">
-            &copy; 2025 RetroChronicles. All Rights Reserved.
+            &copy; 2025 Samware95. All Rights Reserved.
         </div>
     </div>
 </body>

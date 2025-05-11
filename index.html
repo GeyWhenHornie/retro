@@ -24,8 +24,8 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5BDQAwDASh+je9/aWFJ3ZHQQtMbvfOApIQEiEkQkiEkAghmXzk+ZGHkAghEUIihEQIiRASISRCSISQCCERQiKERAiJEBIhJEJIhJAIIRFCIoRECIkQEiEkQkj8BgAA//8DAMiLDgFSQF2GAAAAAElFTkSuQmCC");
-            cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAAB3RJTUUH5gcDDTM1+wXQHwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAGKSURBVFjD7ZexTsMwEIa/JE2oGqliREgwM/EgvFYfpY/BwMjEiBgQEqhqAk01KQ6DnaZN7dgGsXSlU+K743I/91+cgFarnYqIBB5s5OLr5xeAz1mISbL8D4ggsExizzl/EqIcwLcLokNExADYCESUDSkUBYDCJz/QfXjjGE9Y+XuCsCEHH5AYVMHx2SXbh6eU3aIczkgTzz9/J3h/fWZ3/8Bo/wj3fg/EbdxOE9KM+HFbA1GrgS1ArMfr10YvuoaNK6DTe2J0egFAENiY5EUgyjbV9//QNUw+nNLrX7NKYjaPcTHKgQCmcVppIzufj8fj1D5WS5CdTWbTyaR2JUDZKyCe09PDHYvxK23XQVQUJVKpBEYQl3ef3N49E8fzFWukCpHbVJ0uBLDs7yCQu+KKOiICQVCUe6SFACuJFfbWbk9Rbs9N5+bGFdVy3x1CKokqm6quBJnv1kGgDKBR3+eqPBbTgVR1vjZr1Pc9F5Bw4jxWqlLI34ZaOC8JRPXU8wNpAjCbxXT2dik6XU2C/w28AJGtU51ZieCLAAAAAElFTkSuQmCC"), default;
+            background-image: url("bg-pattern.png");
+            cursor: url("cursor.png"), default;
         }
         
         /* Windows 98 Window Styling */
@@ -67,6 +67,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
         }
         
         .title-bar-control:hover {
@@ -146,6 +147,7 @@
             border: 2px outset white;
             background: #c0c0c0;
             font-size: 12px;
+            cursor: pointer;
         }
         
         .toolbar-button:hover {
@@ -275,7 +277,8 @@
             font-weight: bold;
             font-size: 12px;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 0;
+            margin-bottom: 0;
         }
         
         .start-button img {
@@ -288,11 +291,22 @@
             border: 2px inset white;
         }
         
+        /* Side Desktop Icons */
+        .desktop-icons {
+            position: fixed;
+            top: 50px;
+            left: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 10;
+        }
+        
         .desktop-icon {
-            display: inline-flex;
+            display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 10px;
+            margin: 10px 0;
             width: 70px;
             cursor: pointer;
         }
@@ -307,18 +321,12 @@
             color: white;
             text-shadow: 1px 1px 1px black;
             font-size: 11px;
-        }
-        
-        .icon-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            padding: 20px;
+            text-align: center;
         }
         
         /* Feature List Style */
         .feature-list {
-            list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5AYKEi0XDmMYPgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAANklEQVQoz2NgoBAwInNyc3P/EzQhLy+PEZ/C////M+JVmJub+x9dAQsxLiBGIVEKyXYBIQAAXIsWIZXvGygAAAAASUVORK5CYII=");
+            list-style-image: url("bullet.png");
             padding-left: 25px;
         }
         
@@ -372,22 +380,101 @@
             margin-right: 10px;
             float: left;
         }
+
+        /* Start Menu */
+        .start-menu {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            width: 220px;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf;
+            display: none;
+            z-index: 1000;
+        }
         
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            .menu-bar, .toolbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .menu-item, .toolbar-button {
-                margin-bottom: 3px;
-            }
-            
-            .window {
-                width: 95%;
-                margin: 10px auto;
-            }
+        .start-menu-header {
+            height: 40px;
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+        }
+        
+        .start-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        .start-menu-item:hover {
+            background: #000080;
+            color: white;
+        }
+        
+        .start-menu-item img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        
+        .start-menu-divider {
+            height: 1px;
+            background: #808080;
+            margin: 2px 0;
+        }
+        
+        /* Startup Dialog */
+        #startup-dialog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #000080;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+        
+        .startup-logo {
+            margin-bottom: 20px;
+        }
+        
+        .startup-progress {
+            width: 300px;
+            height: 20px;
+            background: #c0c0c0;
+            border: 2px inset white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .startup-progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background: #008080;
+            animation: progress 3s linear forwards;
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        .startup-text {
+            margin-top: 10px;
+            font-size: 14px;
         }
         
         /* Loading Animation */
@@ -418,6 +505,35 @@
         @keyframes loading {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .menu-bar, .toolbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .menu-item, .toolbar-button {
+                margin-bottom: 3px;
+            }
+            
+            .window {
+                width: 95%;
+                margin: 10px auto;
+            }
+            
+            .desktop-icons {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-top: 10px;
+            }
+            
+            .desktop-icon {
+                margin: 5px;
+            }
         }
     </style>
     
@@ -461,6 +577,15 @@
             document.getElementById("error-dialog").style.display = "none";
         }
         
+        function toggleStartMenu() {
+            var startMenu = document.getElementById("start-menu");
+            if (startMenu.style.display === "block") {
+                startMenu.style.display = "none";
+            } else {
+                startMenu.style.display = "block";
+            }
+        }
+        
         function typeEffect(element, text, speed = 50) {
             let i = 0;
             element.innerHTML = "";
@@ -480,6 +605,14 @@
         
         // Run when the page loads
         window.onload = function() {
+            // Show startup dialog
+            var startupDialog = document.getElementById("startup-dialog");
+            
+            // Hide startup dialog after 3 seconds
+            setTimeout(function() {
+                startupDialog.style.display = "none";
+            }, 3000);
+            
             // Get the current time
             let now = new Date();
             let timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
@@ -490,39 +623,38 @@
                 let terminalText = "C:\\> Starting SamBot v2.5...\nC:\\> Loading modules...\nC:\\> System ready!\n\nType .help to see all available commands.";
                 typeEffect(document.getElementById("terminal-content"), terminalText, 30);
             }, 500);
-            
-            // Update startup sound
-            document.getElementById("startup-sound").play();
         };
     </script>
 </head>
 
 <body>
-    <!-- Hidden startup sound -->
-    <audio id="startup-sound" preload="auto">
-        <source src="data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA/+M4wAAAAAAAAAAAAEluZm8AAAAPAAAABQAAAQgAYGBgYGBgYGBgYGBg4ODg4ODg4ODg4ODg4ODgQEBAQEBAQEBAQEBAQMDAwMDAwMDAwMDAwMDA////////////YWFhYWFhYWFhYWFhYaGhoaGhoaGhoaGhoaGhoeHh4eHh4eHh4eHh4eHhAAAAAExhdmM1OC4xMwAAAAAAAAAAAAAAACQFkQAAAAAAAAABCGAX1uvvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+MYxAALACwAAANIAAAAABzqQAAAgAAHOtAP7gIAAAI" type="audio/mp3">
-    </audio>
+    <!-- Startup Dialog -->
+    <div id="startup-dialog">
+        <div class="startup-logo">
+            <img src="https://i.ibb.co/84rVz28T/winlogo.png" alt="Windows 98" width="200">
+        </div>
+        <div class="startup-progress">
+            <div class="startup-progress-bar"></div>
+        </div>
+        <div class="startup-text">Starting Windows 95...</div>
+    </div>
     
-    <!-- Desktop Icons -->
-    <div class="icon-grid">
+    <!-- Side Desktop Icons -->
+    <div class="desktop-icons">
         <div class="desktop-icon">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABYUlEQVRYw+2XP0vDQBjGf28jgrQFoYOLdCiiOHSwCK5O/QDiJjj4GRxcHR3qB3AWBzcHEeog6NqhUIQiVAWXDkJbJI+DS6NSemkuaR36wC13uXt+78vdPe8pduzYsWMbRCbiOqf3YyAmNgxeJwVwCUzEDCBABow0wEgMOMCVmKkDeAGOAjjdA87FrJC2z/kGTIGDCOAUuBMzqXG+C9yLScU41XpuRXTF+ZLZV4OB98DHuhuwCRZa7s3/uZlGmQRxoAe4WkXeAOMcbgosegHkuQSmYoq9nkSUjkScJRHlXkT3dVFoEJHVFsJfNICJKGsKwCdwDvQjbKSJcJYd8AtcaICRBpjgGqAGCOkI+fkwAE/AIbBf8bUOPIjpVlkqzxpgpAGWFe2Zu2XC7iUQoAu8ijko0UKBKzE9PmqAxwqLMQEexPQrLJUbDeB/BAqKUAXmYkYNxqlW84B8l7v3zUHIeXL+x44dO3a0kt9vEt9eBVu75AAAAABJRU5ErkJggg==" alt="My Computer">
+            <img src="https://i.ibb.co/twspQYW8/mycom.png" alt="My Computer">
             <div class="desktop-icon-text">My Computer</div>
         </div>
         <div class="desktop-icon">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB8klEQVRYw+2XPWsUURSGn3NndhMTkUVBsLOxsLD0B1iJjWBhI1gJlv4GCztbOzs7f4JgYWNjY2MhgmAjaKGIQtgk5mM/7nGxM5hEZndmN1swcODCMHPvfd/3nI97zxnBwMDAwMA6EKnXJ7jZSZi3BKoDvPdGuNWJ9t6JtDhTYIbfxbHyXuTwTJBTTnLpPm7xz+6NcLNX4sefgp2JMj8WDo+FXcA+iC+5xSoSV4QC3AD3LyBTRx7i9nUNJXgGPBLkLNVH+1yBnMi+TcUUDCu8BnZUK8bAY9x+qggWoMJN4B7VD/YRtzDHrfXYzZ5vWlZ9w3RYpHwSx4KcTJgvuaSMz4CcreKK+1aMDe+FQogPjMn24szhx8J5nPTL5sAWXj+zxOYwfGJ0OfEuUJgR3g6wLOzEcU6GmATv0yGtDrAI8BxIuqB1d7O6Z9sAXwLcA1M7p+yOCk1xpYDfAfbVJGqzutf+B0EHaVwG05a4ohTwHbcRm9UdqJpCZnXPtgHeBrgLzHbO6kzTAlNkPIiw6QbJO+1qxpYLz51s3Kzu2SZ8c7MjIidTm7IIZbZpgY0iZFa3D5/aBXizg" alt="My Computer">
-            <div class="desktop-icon-text">My Computer</div>
-        </div>
-        <div class="desktop-icon">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABnklEQVRYw+2XvUoDQRDHf3t7MSiIgqCNVlaCjY2vpY2tj2FhYWFtZeEj+AaCYGdjI1gJgoKihZhEE3P52I1FLnCXu8RccuAp5xZ2Z+Y/s7OzswMttNBCC40gkmSOoaHwXfU+FwMDARfXz+zv3LByPM7+Xj9CCAGJ5xsYmRhldcHn9KTKynwv8zO9CND4AV7egrOLIU5WAtLGBwgFeLj1OT58YmJE43I5wOssIQHF1aqpUPYLJGUZCFPdtlNgGnEF7OD0gVZAmcnJQKHQXaerS1d9ov8VWxH22k6BTYw2w+OA8fHQCUopYBJGBdATcFjYs62A6RRLKpNNKD4ORZkIVS4CSikK90/kcjdsbZbR2gxJa02p9M7V9S3ZbI7eXo1WPkrVr4BSivz9A+n0OTs7Gr+hRPX0GI7jkMlkKRbfUMrnq3LJSyktlJIbOlwg4UdTAZVKmb29U9bXXqMNd9q6XA7G9TyPkxOH7W2j2JZCqhTULdiyAtoyByA+jTXeAXPRVsAIxBK1JXC9rlhjGkHzCRkfUAHWYwAfgGMfbzJzUdQKDfS10EILNZ8+ASE0QuaQSA+oAAAAAElFTkSuQmCC" alt="Network">
+            <img src="https://i.ibb.co/TMcqLqQ4/network.png" alt="Network">
             <div class="desktop-icon-text">Network</div>
         </div>
         <div class="desktop-icon">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACT0lEQVRYw+2XP2gUQRTGf29vb28TI0QRJCCIjWinEEGwEGzs7GwEGwtBJJ2VTSBgZWWjYGUhgmBpYSUoKFiIoghiI4oRJOrf3O7Ne8/i9jgTd/dub28bwQeP2Z2dme/75s83swP/499L6ufHVBIAEdGdAPR9PjOlEAF6bLQPYJ5lQjYZu+YEQDbbCdUJZwHYPODy+wvWvv8CYGrrOEOjW9IdjoCZqXZCAIiIdmr6DvDMDOfMFMcBeDf1kbneV5w9OAHAwvN5Yiy4OwRj+6EZWq2mnVMBiIh2bHlApuKQV+zLxGVmHr4H4Mb541w8dpDFxUXunL7Dk1fv7W6LENNyCECMkRBCKmVxJqVUWf4YI3GtRwiNoqZz4xwA1y7eBkBVufzkMgD7du9jx/YJtCJPMqUDcM47Jt0ABnD73lUAlr79BMDdOX3iPABvP75JPlzwrvrUHb/2LiAiuue8BFCzLtVdXi6yuvor5yOQEbp9V4MiSgHUbZ3nRXkBRrlXoS6i3iCSCwF55x3Hl+YBeP/lAwAT4xMAaRwcPXgAgOfzL9JhZNmBNR9AKpRd1i4cCx9jDGlvdPNR3WT6ACA76LRRh+CvAKj2enoMkN/RfZcRxpXXWecOiIh2nsFEfXOYNRIFE7yaNNQBWVFkRiWnUHV77/cBvxeR23nzutOxurGxZLnnZYpzJlJn21UO5KTMBJrdBQTpRbNjAOu4CNciUq+y5t2Z+YZk23/a5kAtgI2OAP1dTGVDAPptNAuL/tfZcQvfP5PQb6P/APoNMvZ+ENAmkQcAAAAASUVORK5CYII=" alt="Recycle Bin">
+            <img src="https://i.ibb.co/VYv7Lw4T/bin.png" alt="Recycle Bin">
             <div class="desktop-icon-text">Recycle Bin</div>
         </div>
         <div class="desktop-icon">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB1ElEQVRYw+2XsUsCcRTHP3dmaXVQQxE0RNDQn9DQFg0RzTVGW0NjS21NQdBaW0tDQUNDQxFtQUNQS0tBkNrNnWJ1vt+3wUlU5nl3mEEPHtzB8d77ft73vd+7nzCgAQ0oF2IYm6JfVwHlmgIofKu9MoBMgI9yQU8K8mXYOYMxN3YsWDyA2m8LUuD7BbF9iNNs3Yy8w6EDVWclULAPQytQ1+6cIoTgHda3uyTBfwC6+sY72O+uYtjsA55oKJwLKBcSzrR4LGiSgQh+2KFcQEBRjVX1yjhxIcSfABRQDFhQFq9/xdKp9LwK6iSUwQRwYxKJHAl2S2BxSQIGZcEgCToFqAEtSYLg5QnOTjQAGSuLWCwl7WjMxJqaQxv1o94/4eTy5O6vNAA5O0N0ZQNndglvIq1JLuoTbr4tqNzC3fk6+dztR9ybm8ZZXKf+VKCaPzbeUiTtNO7oLLbnW6yJFI7YuEGCJsHzA9zsAX2tBJMpvAtrdBplKoUbDQA6jTJvV4dGACqVNPbpZfWFpAFg2YMBGAEQH8sCMBwGLQu8BEuYZiGEZ1QCGzbAkFHjfRgdoLUyYVRV1qdhqMPINJzUyoRZaEAD+gf0DvcxfH2dK8U7AAAAAElFTkSuQmCC" alt="SamBot">
+            <img src="https://i.ibb.co/C35F4Rky/sambot.png" alt="SamBot">
             <div class="desktop-icon-text">SamBot</div>
         </div>
     </div>
@@ -557,7 +689,7 @@
         
         <div class="content">
             <h2>Welcome to Samware95!</h2>
-            <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB1ElEQVRYw+2XsUsCcRTHP3dmaXVQQxE0RNDQn9DQFg0RzTVGW0NjS21NQdBaW0tDQUNDQxFtQUNQS0tBkNrNnWJ1vt+3wUlU5nl3mEEPHtzB8d77ft73vd+7nzCgAQ0oF2IYm6JfVwHlmgIofKu9MoBMgI9yQU8K8mXYOYMxN3YsWDyA2m8LUuD7BbF9iNNs3Yy8w6EDVWclULAPQytQ1+6cIoTgHda3uyTBfwC6+sY72O+uYtjsA55oKJwLKBcSzrR4LGiSgQh+2KFcQEBRjVX1yjhxIcSfABRQDFhQFq9/xdKp9LwK6iSUwQRwYxKJHAl2S2BxSQIGZcEgCToFqAEtSYLg5QnOTjQAGSuLWCwl7WjMxJqaQxv1o94/4eTy5O6vNAA5O0N0ZQNndglvIq1JLuoTbr4tqNzC3fk6+dztR9ybm8ZZXKf+VKCaPzbeUiTtNO7oLLbnW6yJFI7YuEGCJsHzA9zsAX2tBJMpvAtrdBplKoUbDQA6jTJvV4dGACqVNPbpZfWFpAFg2YMBGAEQH8sCMBwGLQu8BEuYZiGEZ1QCGzbAkFHjfRgdoLUyYVRV1qdhqMPINJzUyoRZaEAD+gf0DvcxfH2dK8U7AAAAAElFTkSuQmCC" style="float: left; margin-right: 15px; margin-bottom: 10px;" width="48" height="48" alt="SamBot Icon">Welcome to <strong>SamBot</strong>, your personal AI assistant for WhatsApp! Experience the power of advanced commands and functionalities that make your digital life easier and more entertaining.</p>
+            <p><img src="https://i.ibb.co/C35F4Rky/sambot.png" style="float: left; margin-right: 15px; margin-bottom: 10px;" width="48" height="48" alt="SamBot Icon">Welcome to <strong>SamBot</strong>, your personal AI assistant for WhatsApp! Experience the power of advanced commands and functionalities that make your digital life easier and more entertaining.</p>
             
             <div style="clear: both;"></div>
             
@@ -593,7 +725,7 @@
         </div>
 
         <div class="whatsapp-box">
-            <img src="/api/placeholder/80/80" alt="WhatsApp Group Icon" style="border: 2px solid black; margin-bottom: 10px;">
+            <img src="https://i.ibb.co/TMdCgNDh/sambot-2.png" alt="WhatsApp Group Icon" style="border: 2px solid black; margin-bottom: 10px;">
             <div>WhatsApp Group: <a href="https://chat.whatsapp.com/BEIyUcsPKdNIuBcVSXMzAd" target="_blank" class="win98-button">Join Now</a></div>
             <p style="font-size: 12px; margin-top: 5px;">Experience SamBot directly in our community group</p>
         </div>
@@ -626,10 +758,46 @@
         </div>
     </div>
     
+    <!-- Start Menu -->
+    <div id="start-menu" class="start-menu">
+        <div class="start-menu-header">
+            Windows 98
+        </div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/WpFCP0Tw/programs.png" alt="Programs">
+            Programs
+        </div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/QvXH7m74/doc.png" alt="Documents">
+            Documents
+        </div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/39jHHMGN/setting.png" alt="Settings">
+            Settings
+        </div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/PGNnwbRv/doc-1.png" alt="Find">
+            Find
+        </div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/B2V3t4zN/help.png" alt="Help">
+            Help
+        </div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/zHZBfKmY/run.png" alt="Run">
+            Run...
+        </div>
+        <div class="start-menu-divider"></div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/zWV3L43W/image-2025-05-11-195320766.png" alt="Shut Down">
+            Shut Down...
+        </div>
+    </div>
+    
     <!-- Start Button -->
     <div style="position: fixed; bottom: 0; left: 0; right: 0; background: #c0c0c0; border-top: 2px solid white; padding: 2px; display: flex;">
-        <button class="start-button">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAo0lEQVQ4y83TMQrCQBCF4W9XbAQvYCNoYSEWXkFvZG1pY+UdLLyDYGdjY+kNxCsICla2diJZyBo3JgtB8MPAzs7jzQ5Mr1apAUZw5QYwpq+47n4mQNgBZp88ZwFi+75xYACQpAwgBza2HwPQAaK1LwZVyf3fRZKsw3UKTEt5qYC57Y+BZdnNgYetyxQl4GrrDNj/KL9LUQI82+fAYN8wdYFwbwT8AeCTSPX8UlbhAAAAAElFTkSuQmCC" alt="Start">
+        <button class="start-button" onclick="toggleStartMenu()">
+            <img src="https://i.ibb.co/84rVz28T/winlogo.png" alt="Start">
             Start
         </button>
         <div style="flex-grow: 1;"></div>
@@ -639,7 +807,7 @@
     <div id="error-dialog" class="dialog">
         <div class="dialog-title">SamBot - Error</div>
         <div class="dialog-content">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABe0lEQVRYw+2XMUvDQBTHf5cmLSIFoYOTmy7FUUTwEzg7uLj0O4ijo4sfwclRcHJ1KIiTo1sHQRxEigUHIW2TvHdOaWlpkjZJu/RAuCOX9/733v/dvQvcsEZFxSlcAleBw8S9Bgq0l4FLPYDkHd55dQABxfYe+DxjpfPt/k6WIGsMQM/mAFGQEIeL7CJsYpGPKCQfQoC1XFiE3fkQIIoCYr+KQrLfqGkBmNRPCRgYAFXdGzVigMD8j8Uaf5PkQBJDHK2zJ4SQieMHOYCGUciF/jIHOF3A7XpbEUNqS/NhBPgDiH0aA7E3jwGcDJbsAK7pPt4TuwDMK2QBuG9vTcZ5lIlTiDEjsKMIkc9g9GQAHGC2QhQjDHdvYOFJDIijJdx2NZUZ7vVBCGIvYPLaQRXeMGvP+O7zFNSHCRy/Z/XWtZrKpJ7D63NcT9Yw2/e4XoCqdSlkCRSQQWFqNkUItZbK1HAGGgAYfW0NwMT6tXhp1AKiPIhAd1qY1o6TvDLz73gHJJ7c8mDGt9AAAAAASUVORK5CYII=" class="error-icon" alt="Error">
+            <img src="error-icon.png" class="error-icon" alt="Error">
             Page not found! The page you're looking for doesn't exist.
         </div>
         <div class="dialog-buttons">

@@ -3,99 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Samware95 - SamBot.">
-    <meta name="keywords" content="Windows 98, Retro Blog, Vintage Web, Classic Design">
-    <meta name="author" content="Your Name">
+    <meta name="description" content="Samware95 - SamBot: Your personal WhatsApp chatbot with a nostalgic Windows 98 interface">
+    <meta name="keywords" content="Windows 98, Retro Computing, Vintage Web, Classic Design, SamBot, WhatsApp Bot">
+    <meta name="author" content="Samware95">
     <script src="https://app.youform.com/widgets/widget.js"></script>
-    <title>Samware95</title>
+    <title>Samware95 - SamBot</title>
     
     <style>
-        /* Windows 98 Style */
+        /* Windows 98 Style Enhanced */
+        @font-face {
+            font-family: "MS Sans Serif";
+            src: url("https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js");
+            font-display: swap;
+        }
+        
         body {
-            font-family: "MS Sans Serif", sans-serif;
-            background-color: #c0c0c0;
+            font-family: "MS Sans Serif", "Pixelated MS Sans Serif", Arial, sans-serif;
+            background-color: #008080; /* Classic Windows 98 teal */
             color: black;
             margin: 0;
             padding: 0;
             text-align: center;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5BDQAwDASh+je9/aWFJ3ZHQQtMbvfOApIQEiEkQkiEkAghmXzk+ZGHkAghEUIihEQIiRASISRCSISQCCERQiKERAiJEBIhJEJIhJAIIRFCIoRECIkQEiEkQkj8BgAA//8DAMiLDgFSQF2GAAAAAElFTkSuQmCC");
+            cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAAB3RJTUUH5gcDDTM1+wXQHwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAGKSURBVFjD7ZexTsMwEIa/JE2oGqliREgwM/EgvFYfpY/BwMjEiBgQEqhqAk01KQ6DnaZN7dgGsXSlU+K743I/91+cgFarnYqIBB5s5OLr5xeAz1mISbL8D4ggsExizzl/EqIcwLcLokNExADYCESUDSkUBYDCJz/QfXjjGE9Y+XuCsCEHH5AYVMHx2SXbh6eU3aIczkgTzz9/J3h/fWZ3/8Bo/wj3fg/EbdxOE9KM+HFbA1GrgS1ArMfr10YvuoaNK6DTe2J0egFAENiY5EUgyjbV9//QNUw+nNLrX7NKYjaPcTHKgQCmcVppIzufj8fj1D5WS5CdTWbTyaR2JUDZKyCe09PDHYvxK23XQVQUJVKpBEYQl3ef3N49E8fzFWukCpHbVJ0uBLDs7yCQu+KKOiICQVCUe6SFACuJFfbWbk9Rbs9N5+bGFdVy3x1CKokqm6quBJnv1kGgDKBR3+eqPBbTgVR1vjZr1Pc9F5Bw4jxWqlLI34ZaOC8JRPXU8wNpAjCbxXT2dik6XU2C/w28AJGtU51ZieCLAAAAAElFTkSuQmCC"), default;
         }
+        
+        /* Windows 98 Window Styling */
         .window {
             width: 90%;
             max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            border: 2px solid black;
-            box-shadow: 3px 3px black;
-            padding: 10px;
+            margin: 40px auto;
+            background: #c0c0c0;
+            border: 3px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf;
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+            padding: 2px;
+            position: relative;
         }
+        
         .title-bar {
-            background: navy;
+            background: linear-gradient(90deg, #000080, #1084d0);
             color: white;
             text-align: left;
-            padding: 5px;
+            padding: 3px 5px;
             font-weight: bold;
-        }
-        .menu {
-            background: silver;
-            padding: 10px;
             display: flex;
-            justify-content: space-around;
-            font-size: 14px;
+            justify-content: space-between;
+            align-items: center;
         }
-        .menu a {
-            text-decoration: none;
-            color: black;
-            padding: 3px 8px;
-            border: 2px outset white;
+        
+        .title-bar-controls {
+            display: flex;
         }
-        .menu a:hover {
-            border: 2px inset white;
+        
+        .title-bar-control {
+            width: 16px;
+            height: 14px;
+            margin-left: 2px;
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #fff #808080 #808080 #fff;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .title-bar-control:hover {
             background: #ddd;
         }
+        
+        .title-bar-close::before, .title-bar-close::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 1px;
+            background: black;
+        }
+        
+        .title-bar-close::before {
+            transform: rotate(45deg);
+        }
+        
+        .title-bar-close::after {
+            transform: rotate(-45deg);
+        }
+        
+        .title-bar-minimize::before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 1px;
+            background: black;
+            bottom: 3px;
+        }
+        
+        .title-bar-maximize {
+            position: relative;
+        }
+        
+        .title-bar-maximize::before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 1px solid black;
+            border-top-width: 2px;
+            top: 1px;
+        }
+        
+        .menu-bar {
+            background: #c0c0c0;
+            border-bottom: 1px solid #808080;
+            padding: 2px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .menu-item {
+            padding: 2px 6px;
+            margin-right: 1px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        .menu-item:hover {
+            background: #000080;
+            color: white;
+        }
+        
+        .toolbar {
+            background: #c0c0c0;
+            border-bottom: 1px solid #808080;
+            padding: 3px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .toolbar-button {
+            padding: 2px 4px;
+            margin-right: 3px;
+            border: 2px outset white;
+            background: #c0c0c0;
+            font-size: 12px;
+        }
+        
+        .toolbar-button:hover {
+            border: 2px inset white;
+        }
+        
         .content {
+            background: white;
             padding: 15px;
             text-align: left;
-        }
-        input[type="text"], button {
-            font-size: 14px;
-            padding: 5px;
-        }
-
-        .whatsapp-box {
-            background: silver;
-            padding: 10px;
-            text-align: center;
-            font-size: 16px;
-            font-weight: bold;
             border: 2px inset white;
-            margin-top: 10px;
         }
-
-        .footer {
-            margin-top: 20px;
+        
+        /* Windows 98 Button Styling */
+        button, .win98-button {
+            font-family: "MS Sans Serif", sans-serif;
             font-size: 12px;
-            background: silver;
-            padding: 5px;
-            border-top: 2px solid black;
+            padding: 4px 10px;
+            background: #c0c0c0;
+            color: black;
+            border: 2px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf;
+            box-shadow: 1px 1px 0 white inset, -1px -1px 0 #707070 inset;
+            cursor: pointer;
+            margin: 5px;
         }
+        
+        button:hover, .win98-button:hover {
+            background: #d0d0d0;
+        }
+        
+        button:active, .win98-button:active {
+            border-color: #000 #dfdfdf #dfdfdf #000;
+            box-shadow: -1px -1px 0 white inset, 1px 1px 0 #707070 inset;
+        }
+        
+        /* Windows 98 Input Styling */
+        input[type="text"] {
+            font-family: "MS Sans Serif", sans-serif;
+            font-size: 12px;
+            padding: 3px 5px;
+            background: white;
+            border: 2px inset #efefef;
+        }
+        
+        .whatsapp-box {
+            background: #c0c0c0;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            border: 2px outset white;
+            margin-top: 20px;
+        }
+        
+        .whatsapp-box img {
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            border: 2px inset white;
+        }
+        
         .terminal-box {
             background-color: #000;
-            color: #0f0;
+            color: #00aa00;
             font-family: "Courier New", monospace;
             padding: 15px;
-            margin-top: 20px;
+            margin: 15px 0;
             border: 2px inset #0f0;
             text-align: left;
             white-space: pre-wrap;
+            box-shadow: inset 0 0 10px rgba(0, 170, 0, 0.5);
         }
+        
+        .terminal-cursor {
+            animation: blink 1s step-start infinite;
+        }
+        
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        
+        .terminal-box h3 {
+            margin-top: 0;
+            border-bottom: 1px solid #00aa00;
+            padding-bottom: 5px;
+        }
+        
+        .terminal-box code {
+            background: transparent;
+            font-family: inherit;
+            color: #00ff00;
+        }
+        
+        .footer {
+            margin-top: 10px;
+            font-size: 11px;
+            background: #c0c0c0;
+            padding: 5px;
+            border-top: 1px solid #808080;
+            text-align: center;
+        }
+        
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            background: #c0c0c0;
+            border-top: 1px solid #808080;
+            padding: 2px 5px;
+            font-size: 11px;
+            margin-top: 10px;
+        }
+        
+        .status-section {
+            border: 1px inset white;
+            padding: 2px 5px;
+            background: white;
+            flex: 1;
+            margin-right: 5px;
+            text-align: left;
+        }
+        
+        .start-button {
+            display: flex;
+            align-items: center;
+            background: #c0c0c0;
+            border: 2px outset white;
+            padding: 2px 8px;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        
+        .start-button img {
+            margin-right: 5px;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .start-button:active {
+            border: 2px inset white;
+        }
+        
+        .desktop-icon {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px;
+            width: 70px;
+            cursor: pointer;
+        }
+        
+        .desktop-icon img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 5px;
+        }
+        
+        .desktop-icon-text {
+            color: white;
+            text-shadow: 1px 1px 1px black;
+            font-size: 11px;
+        }
+        
+        .icon-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            padding: 20px;
+        }
+        
+        /* Feature List Style */
+        .feature-list {
+            list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH5AYKEi0XDmMYPgAAAB1pVFh0Q29tbWVudAAAAAAAQ3JlYXRlZCB3aXRoIEdJTVBkLmUHAAAANklEQVQoz2NgoBAwInNyc3P/EzQhLy+PEZ/C////M+JVmJub+x9dAQsxLiBGIVEKyXYBIQAAXIsWIZXvGygAAAAASUVORK5CYII=");
+            padding-left: 25px;
+        }
+        
+        .feature-list li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+        
+        /* Dialog Box */
+        .dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #c0c0c0;
+            border: 3px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf;
+            padding: 2px;
+            width: 300px;
+            display: none;
+            z-index: 100;
+        }
+        
+        .dialog-title {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: white;
+            padding: 3px 5px;
+            font-weight: bold;
+        }
+        
+        .dialog-content {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .dialog-buttons {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        /* Hide dialog by default */
+        #error-dialog {
+            display: none;
+        }
+        
+        /* Error icon */
+        .error-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            float: left;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 600px) {
-            .menu {
+            .menu-bar, .toolbar {
                 flex-direction: column;
-                text-align: center;
+                align-items: flex-start;
             }
-            .menu a {
-                margin: 5px 0;
+            
+            .menu-item, .toolbar-button {
+                margin-bottom: 3px;
             }
+            
+            .window {
+                width: 95%;
+                margin: 10px auto;
+            }
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 20px;
+            width: 100%;
+        }
+        
+        .loading-block {
+            width: 10px;
+            height: 10px;
+            background-color: #000080;
+            margin: 0 2px;
+            animation: loading 1s infinite;
+        }
+        
+        .loading-block:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        
+        .loading-block:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        
+        @keyframes loading {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
     </style>
     
@@ -116,62 +438,213 @@
                 "home": "index.html",
                 "about": "about.html",
                 "blog": "blog.html",
-                "contact": "contact.html"
+                "contact": "contact.html",
+                "download": "download.html",
+                "faq": "faq.html"
             };
-            if (pages[query]) {
-                window.location.href = pages[query];
-            } else {
-                alert("Page not found!");
-            }
+            
+            // Show loading animation
+            document.getElementById("searchResults").innerHTML = '<div class="loading"><div class="loading-block"></div><div class="loading-block"></div><div class="loading-block"></div></div>';
+            
+            // Simulate search delay
+            setTimeout(function() {
+                if (pages[query]) {
+                    window.location.href = pages[query];
+                } else {
+                    document.getElementById("error-dialog").style.display = "block";
+                    document.getElementById("searchResults").innerHTML = "";
+                }
+            }, 800);
         }
+        
+        function closeDialog() {
+            document.getElementById("error-dialog").style.display = "none";
+        }
+        
+        function typeEffect(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = "";
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    element.innerHTML += '<span class="terminal-cursor">█</span>';
+                }
+            }
+            
+            type();
+        }
+        
+        // Run when the page loads
+        window.onload = function() {
+            // Get the current time
+            let now = new Date();
+            let timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            document.getElementById("status-time").innerText = timeString;
+            
+            // Start the terminal typing effect
+            setTimeout(function() {
+                let terminalText = "C:\\> Starting SamBot v2.5...\nC:\\> Loading modules...\nC:\\> System ready!\n\nType .help to see all available commands.";
+                typeEffect(document.getElementById("terminal-content"), terminalText, 30);
+            }, 500);
+            
+            // Update startup sound
+            document.getElementById("startup-sound").play();
+        };
     </script>
 </head>
 
 <body>
-    <div class="window">
-        <div class="title-bar">Samware95 - A Homepage for SamBot</div>
-        
-        <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="blog.html">Blog</a>
-            <a href="contact.html">Contact</a>
+    <!-- Hidden startup sound -->
+    <audio id="startup-sound" preload="auto">
+        <source src="data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA/+M4wAAAAAAAAAAAAEluZm8AAAAPAAAABQAAAQgAYGBgYGBgYGBgYGBg4ODg4ODg4ODg4ODg4ODgQEBAQEBAQEBAQEBAQMDAwMDAwMDAwMDAwMDA////////////YWFhYWFhYWFhYWFhYaGhoaGhoaGhoaGhoaGhoeHh4eHh4eHh4eHh4eHhAAAAAExhdmM1OC4xMwAAAAAAAAAAAAAAACQFkQAAAAAAAAABCGAX1uvvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+MYxAALACwAAANIAAAAABzqQAAAgAAHOtAP7gIAAAI" type="audio/mp3">
+    </audio>
+    
+    <!-- Desktop Icons -->
+    <div class="icon-grid">
+        <div class="desktop-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABYUlEQVRYw+2XP0vDQBjGf28jgrQFoYOLdCiiOHSwCK5O/QDiJjj4GRxcHR3qB3AWBzcHEeog6NqhUIQiVAWXDkJbJI+DS6NSemkuaR36wC13uXt+78vdPe8pduzYsWMbRCbiOqf3YyAmNgxeJwVwCUzEDCBABow0wEgMOMCVmKkDeAGOAjjdA87FrJC2z/kGTIGDCOAUuBMzqXG+C9yLScU41XpuRXTF+ZLZV4OB98DHuhuwCRZa7s3/uZlGmQRxoAe4WkXeAOMcbgosegHkuQSmYoq9nkSUjkScJRHlXkT3dVFoEJHVFsJfNICJKGsKwCdwDvQjbKSJcJYd8AtcaICRBpjgGqAGCOkI+fkwAE/AIbBf8bUOPIjpVlkqzxpgpAGWFe2Zu2XC7iUQoAu8ijko0UKBKzE9PmqAxwqLMQEexPQrLJUbDeB/BAqKUAXmYkYNxqlW84B8l7v3zUHIeXL+x44dO3a0kt9vEt9eBVu75AAAAABJRU5ErkJggg==" alt="My Computer">
+            <div class="desktop-icon-text">My Computer</div>
         </div>
+        <div class="desktop-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB8klEQVRYw+2XPWsUURSGn3NndhMTkUVBsLOxsLD0B1iJjWBhI1gJlv4GCztbOzs7f4JgYWNjY2MhgmAjaKGIQtgk5mM/7nGxM5hEZndmN1swcODCMHPvfd/3nI97zxnBwMDAwMA6EKnXJ7jZSZi3BKoDvPdGuNWJ9t6JtDhTYIbfxbHyXuTwTJBTTnLpPm7xz+6NcLNX4sefgp2JMj8WDo+FXcA+iC+5xSoSV4QC3AD3LyBTRx7i9nUNJXgGPBLkLNVH+1yBnMi+TcUUDCu8BnZUK8bAY9x+qggWoMJN4B7VD/YRtzDHrfXYzZ5vWlZ9w3RYpHwSx4KcTJgvuaSMz4CcreKK+1aMDe+FQogPjMn24szhx8J5nPTL5sAWXj+zxOYwfGJ0OfEuUJgR3g6wLOzEcU6GmATv0yGtDrAI8BxIuqB1d7O6Z9sAXwLcA1M7p+yOCk1xpYDfAfbVJGqzutf+B0EHaVwG05a4ohTwHbcRm9UdqJpCZnXPtgHeBrgLzHbO6kzTAlNkPIiw6QbJO+1qxpYLz51s3Kzu2SZ8c7MjIidTm7IIZbZpgY0iZFa3D5/aBXizg" alt="My Computer">
+            <div class="desktop-icon-text">My Computer</div>
+        </div>
+        <div class="desktop-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABnklEQVRYw+2XvUoDQRDHf3t7MSiIgqCNVlaCjY2vpY2tj2FhYWFtZeEj+AaCYGdjI1gJgoKihZhEE3P52I1FLnCXu8RccuAp5xZ2Z+Y/s7OzswMttNBCC40gkmSOoaHwXfU+FwMDARfXz+zv3LByPM7+Xj9CCAGJ5xsYmRhldcHn9KTKynwv8zO9CND4AV7egrOLIU5WAtLGBwgFeLj1OT58YmJE43I5wOssIQHF1aqpUPYLJGUZCFPdtlNgGnEF7OD0gVZAmcnJQKHQXaerS1d9ov8VWxH22k6BTYw2w+OA8fHQCUopYBJGBdATcFjYs62A6RRLKpNNKD4ORZkIVS4CSikK90/kcjdsbZbR2gxJa02p9M7V9S3ZbI7eXo1WPkrVr4BSivz9A+n0OTs7Gr+hRPX0GI7jkMlkKRbfUMrnq3LJSyktlJIbOlwg4UdTAZVKmb29U9bXXqMNd9q6XA7G9TyPkxOH7W2j2JZCqhTULdiyAtoyByA+jTXeAXPRVsAIxBK1JXC9rlhjGkHzCRkfUAHWYwAfgGMfbzJzUdQKDfS10EILNZ8+ASE0QuaQSA+oAAAAAElFTkSuQmCC" alt="Network">
+            <div class="desktop-icon-text">Network</div>
+        </div>
+        <div class="desktop-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACT0lEQVRYw+2XP2gUQRTGf29vb28TI0QRJCCIjWinEEGwEGzs7GwEGwtBJJ2VTSBgZWWjYGUhgmBpYSUoKFiIoghiI4oRJOrf3O7Ne8/i9jgTd/dub28bwQeP2Z2dme/75s83swP/499L6ufHVBIAEdGdAPR9PjOlEAF6bLQPYJ5lQjYZu+YEQDbbCdUJZwHYPODy+wvWvv8CYGrrOEOjW9IdjoCZqXZCAIiIdmr6DvDMDOfMFMcBeDf1kbneV5w9OAHAwvN5Yiy4OwRj+6EZWq2mnVMBiIh2bHlApuKQV+zLxGVmHr4H4Mb541w8dpDFxUXunL7Dk1fv7W6LENNyCECMkRBCKmVxJqVUWf4YI3GtRwiNoqZz4xwA1y7eBkBVufzkMgD7du9jx/YJtCJPMqUDcM47Jt0ABnD73lUAlr79BMDdOX3iPABvP75JPlzwrvrUHb/2LiAiuue8BFCzLtVdXi6yuvor5yOQEbp9V4MiSgHUbZ3nRXkBRrlXoS6i3iCSCwF55x3Hl+YBeP/lAwAT4xMAaRwcPXgAgOfzL9JhZNmBNR9AKpRd1i4cCx9jDGlvdPNR3WT6ACA76LRRh+CvAKj2enoMkN/RfZcRxpXXWecOiIh2nsFEfXOYNRIFE7yaNNQBWVFkRiWnUHV77/cBvxeR23nzutOxurGxZLnnZYpzJlJn21UO5KTMBJrdBQTpRbNjAOu4CNciUq+y5t2Z+YZk23/a5kAtgI2OAP1dTGVDAPptNAuL/tfZcQvfP5PQb6P/APoNMvZ+ENAmkQcAAAAASUVORK5CYII=" alt="Recycle Bin">
+            <div class="desktop-icon-text">Recycle Bin</div>
+        </div>
+        <div class="desktop-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB1ElEQVRYw+2XsUsCcRTHP3dmaXVQQxE0RNDQn9DQFg0RzTVGW0NjS21NQdBaW0tDQUNDQxFtQUNQS0tBkNrNnWJ1vt+3wUlU5nl3mEEPHtzB8d77ft73vd+7nzCgAQ0oF2IYm6JfVwHlmgIofKu9MoBMgI9yQU8K8mXYOYMxN3YsWDyA2m8LUuD7BbF9iNNs3Yy8w6EDVWclULAPQytQ1+6cIoTgHda3uyTBfwC6+sY72O+uYtjsA55oKJwLKBcSzrR4LGiSgQh+2KFcQEBRjVX1yjhxIcSfABRQDFhQFq9/xdKp9LwK6iSUwQRwYxKJHAl2S2BxSQIGZcEgCToFqAEtSYLg5QnOTjQAGSuLWCwl7WjMxJqaQxv1o94/4eTy5O6vNAA5O0N0ZQNndglvIq1JLuoTbr4tqNzC3fk6+dztR9ybm8ZZXKf+VKCaPzbeUiTtNO7oLLbnW6yJFI7YuEGCJsHzA9zsAX2tBJMpvAtrdBplKoUbDQA6jTJvV4dGACqVNPbpZfWFpAFg2YMBGAEQH8sCMBwGLQu8BEuYZiGEZ1QCGzbAkFHjfRgdoLUyYVRV1qdhqMPINJzUyoRZaEAD+gf0DvcxfH2dK8U7AAAAAElFTkSuQmCC" alt="SamBot">
+            <div class="desktop-icon-text">SamBot</div>
+        </div>
+    </div>
 
-        <div class="content">
-            <h2>Welcome to Samware95!</h2>
-            <p>Welcome to Sam Bot, your personal chatbot on WhatsApp — now upgraded with powerful commands to make life easier and way more fun!</p>
-        
-            <div class="terminal-box">
-                <h3 style="color: #0ff;">How to Get Started:</h3>
-                Just drop a message:
-                <pre><code>!bot hi sambot</code></pre>
-                ...to talk with our AI.
-
-                Or type:
-                <pre><code>.help</code></pre>
-                ...to reveal the full arsenal of commands.
+    <!-- Main Window -->
+    <div class="window">
+        <div class="title-bar">
+            <div>Samware95 - SamBot Homepage</div>
+            <div class="title-bar-controls">
+                <div class="title-bar-control title-bar-minimize"></div>
+                <div class="title-bar-control title-bar-maximize"></div>
+                <div class="title-bar-control title-bar-close"></div>
             </div>
         </div>
-
-        <!-- ...existing content before this -->
-
-<div class="whatsapp-box">
-    <a href="https://chat.whatsapp.com/BEIyUcsPKdNIuBcVSXMzAd" target="_blank"><img src="https://i.ibb.co/mrpL2pY1/sambot.jpg" alt="WhatsApp Group Icon" style="width: 80px; height: 80px; border: 2px solid black; margin-bottom: 10px;"></a>
-    <div>WhatsApp Group: <a href="https://chat.whatsapp.com/BEIyUcsPKdNIuBcVSXMzAd" target="_blank">Join</a></div>
-</div>
-
-
-        <!-- ✅ YouForm embed -->
-<button data-youform-open="gr6jvia5" data-youform-position="center">
-    Add SamBot in your group
-</button>
-
-
-        <div class="footer">
-            &copy; 2025 Samware95. All Rights Reserved.
+        
+        <div class="menu-bar">
+            <div class="menu-item">File</div>
+            <div class="menu-item">Edit</div>
+            <div class="menu-item">View</div>
+            <div class="menu-item">Favorites</div>
+            <div class="menu-item">Tools</div>
+            <div class="menu-item">Help</div>
+        </div>
+        
+        <div class="toolbar">
+            <div class="toolbar-button">Back</div>
+            <div class="toolbar-button">Forward</div>
+            <div class="toolbar-button">Refresh</div>
+            <div class="toolbar-button">Home</div>
+            <div class="toolbar-button">Search</div>
+        </div>
+        
+        <div class="content">
+            <h2>Welcome to Samware95!</h2>
+            <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB1ElEQVRYw+2XsUsCcRTHP3dmaXVQQxE0RNDQn9DQFg0RzTVGW0NjS21NQdBaW0tDQUNDQxFtQUNQS0tBkNrNnWJ1vt+3wUlU5nl3mEEPHtzB8d77ft73vd+7nzCgAQ0oF2IYm6JfVwHlmgIofKu9MoBMgI9yQU8K8mXYOYMxN3YsWDyA2m8LUuD7BbF9iNNs3Yy8w6EDVWclULAPQytQ1+6cIoTgHda3uyTBfwC6+sY72O+uYtjsA55oKJwLKBcSzrR4LGiSgQh+2KFcQEBRjVX1yjhxIcSfABRQDFhQFq9/xdKp9LwK6iSUwQRwYxKJHAl2S2BxSQIGZcEgCToFqAEtSYLg5QnOTjQAGSuLWCwl7WjMxJqaQxv1o94/4eTy5O6vNAA5O0N0ZQNndglvIq1JLuoTbr4tqNzC3fk6+dztR9ybm8ZZXKf+VKCaPzbeUiTtNO7oLLbnW6yJFI7YuEGCJsHzA9zsAX2tBJMpvAtrdBplKoUbDQA6jTJvV4dGACqVNPbpZfWFpAFg2YMBGAEQH8sCMBwGLQu8BEuYZiGEZ1QCGzbAkFHjfRgdoLUyYVRV1qdhqMPINJzUyoRZaEAD+gf0DvcxfH2dK8U7AAAAAElFTkSuQmCC" style="float: left; margin-right: 15px; margin-bottom: 10px;" width="48" height="48" alt="SamBot Icon">Welcome to <strong>SamBot</strong>, your personal AI assistant for WhatsApp! Experience the power of advanced commands and functionalities that make your digital life easier and more entertaining.</p>
+            
+            <div style="clear: both;"></div>
+            
+            <h3>What is SamBot?</h3>
+            <p>SamBot is a state-of-the-art WhatsApp chatbot powered by advanced AI technology. Whether you need information, entertainment, or assistance with daily tasks, SamBot has got you covered with its extensive range of commands and features.</p>
+            
+            <div class="terminal-box">
+                <h3 style="color: #0ff;">SamBot Command Center:</h3>
+                <div id="terminal-content">
+                    <!-- Terminal content will be typed here via JS -->
+                </div>
+            </div>
+            
+            <h3>Key Features:</h3>
+            <ul class="feature-list">
+                <li><strong>AI Chat:</strong> Have natural conversations with SamBot about virtually any topic</li>
+                <li><strong>Image Generation:</strong> Create unique images from text descriptions</li>
+                <li><strong>Information Retrieval:</strong> Get instant answers to your questions</li>
+                <li><strong>Fun Commands:</strong> Games, jokes, memes, and entertainment</li>
+                <li><strong>Group Management:</strong> Moderation tools and admin helpers</li>
+                <li><strong>Custom Responses:</strong> Teach SamBot personalized responses</li>
+            </ul>
+            
+            <h3>Getting Started:</h3>
+            <p>Adding SamBot to your WhatsApp experience is simple:</p>
+            <ol>
+                <li>Join our WhatsApp group using the link below</li>
+                <li>Type <code>.help</code> to see all available commands</li>
+                <li>Start interacting with SamBot using the command prefix <code>!bot</code></li>
+            </ol>
+            
+            <p>For group administrators who want to add SamBot to their own groups, please use the "Add SamBot in your group" button below.</p>
         </div>
 
+        <div class="whatsapp-box">
+            <img src="/api/placeholder/80/80" alt="WhatsApp Group Icon" style="border: 2px solid black; margin-bottom: 10px;">
+            <div>WhatsApp Group: <a href="https://chat.whatsapp.com/BEIyUcsPKdNIuBcVSXMzAd" target="_blank" class="win98-button">Join Now</a></div>
+            <p style="font-size: 12px; margin-top: 5px;">Experience SamBot directly in our community group</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div style="padding: 10px; background: #c0c0c0; border-top: 1px solid #808080;">
+            <div style="display: flex;">
+                <input type="text" id="searchBox" placeholder="Search pages..." style="flex: 1;">
+                <button onclick="searchPages()" class="win98-button">Search</button>
+            </div>
+            <div id="searchResults" style="height: 20px; margin-top: 5px;"></div>
+        </div>
+
+        <!-- YouForm embed -->
+        <div style="text-align: center; padding: 15px; background: #c0c0c0;">
+            <button data-youform-open="gr6jvia5" data-youform-position="center" class="win98-button" style="font-weight: bold; padding: 8px 15px;">
+                Add SamBot in your group
+            </button>
+        </div>
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-section">Ready</div>
+            <div class="status-section">Visitors: 12,548</div>
+            <div class="status-section" id="status-time">12:00 PM</div>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 Samware95. All Rights Reserved. | Last updated: 05/08/25
+        </div>
+    </div>
+    
+    <!-- Start Button -->
+    <div style="position: fixed; bottom: 0; left: 0; right: 0; background: #c0c0c0; border-top: 2px solid white; padding: 2px; display: flex;">
+        <button class="start-button">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAo0lEQVQ4y83TMQrCQBCF4W9XbAQvYCNoYSEWXkFvZG1pY+UdLLyDYGdjY+kNxCsICla2diJZyBo3JgtB8MPAzs7jzQ5Mr1apAUZw5QYwpq+47n4mQNgBZp88ZwFi+75xYACQpAwgBza2HwPQAaK1LwZVyf3fRZKsw3UKTEt5qYC57Y+BZdnNgYetyxQl4GrrDNj/KL9LUQI82+fAYN8wdYFwbwT8AeCTSPX8UlbhAAAAAElFTkSuQmCC" alt="Start">
+            Start
+        </button>
+        <div style="flex-grow: 1;"></div>
+    </div>
+    
+    <!-- Error Dialog -->
+    <div id="error-dialog" class="dialog">
+        <div class="dialog-title">SamBot - Error</div>
+        <div class="dialog-content">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABe0lEQVRYw+2XMUvDQBTHf5cmLSIFoYOTmy7FUUTwEzg7uLj0O4ijo4sfwclRcHJ1KIiTo1sHQRxEigUHIW2TvHdOaWlpkjZJu/RAuCOX9/733v/dvQvcsEZFxSlcAleBw8S9Bgq0l4FLPYDkHd55dQABxfYe+DxjpfPt/k6WIGsMQM/mAFGQEIeL7CJsYpGPKCQfQoC1XFiE3fkQIIoCYr+KQrLfqGkBmNRPCRgYAFXdGzVigMD8j8Uaf5PkQBJDHK2zJ4SQieMHOYCGUciF/jIHOF3A7XpbEUNqS/NhBPgDiH0aA7E3jwGcDJbsAK7pPt4TuwDMK2QBuG9vTcZ5lIlTiDEjsKMIkc9g9GQAHGC2QhQjDHdvYOFJDIijJdx2NZUZ7vVBCGIvYPLaQRXeMGvP+O7zFNSHCRy/Z/XWtZrKpJ7D63NcT9Yw2/e4XoCqdSlkCRSQQWFqNkUItZbK1HAGGgAYfW0NwMT6tXhp1AKiPIhAd1qY1o6TvDLz73gHJJ7c8mDGt9AAAAAASUVORK5CYII=" class="error-icon" alt="Error">
+            Page not found! The page you're looking for doesn't exist.
+        </div>
+        <div class="dialog-buttons">
+            <button onclick="closeDialog()" class="win98-button">OK</button>
+        </div>
     </div>
 </body>
 </html>

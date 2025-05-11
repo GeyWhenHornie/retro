@@ -602,29 +602,41 @@
             
             type();
         }
-        
-        // Run when the page loads
-        window.onload = function() {
-            // Show startup dialog
-            var startupDialog = document.getElementById("startup-dialog");
-            
-            // Hide startup dialog after 3 seconds
-            setTimeout(function() {
-                startupDialog.style.display = "none";
-            }, 3000);
-            
-            // Get the current time
-            let now = new Date();
-            let timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            document.getElementById("status-time").innerText = timeString;
-            
-            // Start the terminal typing effect
-            setTimeout(function() {
-                let terminalText = "C:\\> Starting SamBot v2.5...\nC:\\> Loading modules...\nC:\\> System ready!\n\nType .help to see all available commands.";
-                typeEffect(document.getElementById("terminal-content"), terminalText, 30);
-            }, 500);
-        };
-    </script>
+        function joinWhatsApp() {
+    window.open('https://chat.whatsapp.com/BEIyUcsPKdNIuBcVSXMzAd', '_blank');
+    closeWhatsAppPopup();
+    }
+  
+        function closeWhatsAppPopup() {
+    document.getElementById("whatsapp-popup").style.display = "none";
+  }
+  
+  // Modified window.onload function to show WhatsApp popup after startup
+  window.onload = function() {
+    // Show startup dialog
+    var startupDialog = document.getElementById("startup-dialog");
+    
+    // Hide startup dialog after 3 seconds and show WhatsApp popup
+    setTimeout(function() {
+      startupDialog.style.display = "none";
+      // Show WhatsApp popup with a slight delay for better UX
+      setTimeout(function() {
+        document.getElementById("whatsapp-popup").style.display = "block";
+      }, 500);
+    }, 3000);
+    
+    // Get the current time
+    let now = new Date();
+    let timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    document.getElementById("status-time").innerText = timeString;
+    
+    // Start the terminal typing effect
+    setTimeout(function() {
+      let terminalText = "C:\\> Starting SamBot v2.5...\nC:\\> Loading modules...\nC:\\> System ready!\n\nType .help to see all available commands.";
+      typeEffect(document.getElementById("terminal-content"), terminalText, 30);
+    }, 500);
+  };
+</script>
 </head>
 
 <body>
@@ -814,5 +826,18 @@
             <button onclick="closeDialog()" class="win98-button">OK</button>
         </div>
     </div>
+
+    <div id="whatsapp-popup" class="dialog" style="width: 350px; z-index: 9999;">
+        <div class="dialog-title">Join SamBot WhatsApp Group</div>
+        <div class="dialog-content">
+          <img src="https://i.ibb.co/TMdCgNDh/sambot-2.png" alt="WhatsApp Group Icon" style="width: 80px; height: 80px; display: block; margin: 0 auto 15px;">
+          <p>Would you like to join our WhatsApp group to experience SamBot?</p>
+          <p style="font-size: 11px; margin-top: 10px;">Join our community of over 68 active users and you're the one we need!</p>
+        </div>
+        <div class="dialog-buttons">
+          <button onclick="joinWhatsApp()" class="win98-button" style="background: #25D366; color: white; font-weight: bold;">Join Now</button>
+          <button onclick="closeWhatsAppPopup()" class="win98-button">Maybe Later</button>
+        </div>
+      </div>
 </body>
 </html>

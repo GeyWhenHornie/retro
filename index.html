@@ -7,16 +7,18 @@
     <meta name="keywords" content="Windows 98, Retro Computing, Vintage Web, Classic Design, SamBot, WhatsApp Bot">
     <meta name="author" content="Samware95">
     <script src="https://app.youform.com/widgets/widget.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
     <title>Samware95 - SamBot</title>
-    
+
     <style>
         /* Windows 98 Style Enhanced */
         @font-face {
             font-family: "MS Sans Serif";
-            src: url("https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js");
+            /* Note: Using webfontloader like this is less common now. Consider direct font links if possible. */
+            src: url("https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"); /* This URL loads a script, not a font file directly */
             font-display: swap;
         }
-        
+
         body {
             font-family: "MS Sans Serif", "Pixelated MS Sans Serif", Arial, sans-serif;
             background-color: #008080; /* Classic Windows 98 teal */
@@ -24,10 +26,12 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            background-image: url("bg-pattern.png");
+            /* Provide fallback background color if image fails */
+            background: #008080 url("bg-pattern.png");
+            /* Provide fallback cursor */
             cursor: url("cursor.png"), default;
         }
-        
+
         /* Windows 98 Window Styling */
         .window {
             width: 90%;
@@ -40,7 +44,7 @@
             padding: 2px;
             position: relative;
         }
-        
+
         .title-bar {
             background: linear-gradient(90deg, #000080, #1084d0);
             color: white;
@@ -50,12 +54,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: default; /* Default cursor for title bar */
         }
-        
+
         .title-bar-controls {
             display: flex;
         }
-        
+
         .title-bar-control {
             width: 16px;
             height: 14px;
@@ -67,13 +72,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
+            cursor: pointer; /* Use default pointer for controls */
         }
-        
+
         .title-bar-control:hover {
             background: #ddd;
         }
-        
+
         .title-bar-close::before, .title-bar-close::after {
             content: "";
             position: absolute;
@@ -81,15 +86,15 @@
             height: 1px;
             background: black;
         }
-        
+
         .title-bar-close::before {
             transform: rotate(45deg);
         }
-        
+
         .title-bar-close::after {
             transform: rotate(-45deg);
         }
-        
+
         .title-bar-minimize::before {
             content: "";
             position: absolute;
@@ -98,11 +103,11 @@
             background: black;
             bottom: 3px;
         }
-        
+
         .title-bar-maximize {
             position: relative;
         }
-        
+
         .title-bar-maximize::before {
             content: "";
             position: absolute;
@@ -112,7 +117,7 @@
             border-top-width: 2px;
             top: 1px;
         }
-        
+
         .menu-bar {
             background: #c0c0c0;
             border-bottom: 1px solid #808080;
@@ -120,19 +125,19 @@
             display: flex;
             flex-wrap: wrap;
         }
-        
+
         .menu-item {
             padding: 2px 6px;
             margin-right: 1px;
-            cursor: pointer;
+            cursor: pointer; /* Use default pointer */
             font-size: 12px;
         }
-        
+
         .menu-item:hover {
             background: #000080;
             color: white;
         }
-        
+
         .toolbar {
             background: #c0c0c0;
             border-bottom: 1px solid #808080;
@@ -140,27 +145,27 @@
             display: flex;
             flex-wrap: wrap;
         }
-        
+
         .toolbar-button {
             padding: 2px 4px;
             margin-right: 3px;
             border: 2px outset white;
             background: #c0c0c0;
             font-size: 12px;
-            cursor: pointer;
+            cursor: pointer; /* Use default pointer */
         }
-        
+
         .toolbar-button:hover {
             border: 2px inset white;
         }
-        
+
         .content {
             background: white;
             padding: 15px;
             text-align: left;
             border: 2px inset white;
         }
-        
+
         /* Windows 98 Button Styling */
         button, .win98-button {
             font-family: "MS Sans Serif", sans-serif;
@@ -171,19 +176,19 @@
             border: 2px solid;
             border-color: #dfdfdf #000 #000 #dfdfdf;
             box-shadow: 1px 1px 0 white inset, -1px -1px 0 #707070 inset;
-            cursor: pointer;
+            cursor: pointer; /* Use default pointer */
             margin: 5px;
         }
-        
+
         button:hover, .win98-button:hover {
             background: #d0d0d0;
         }
-        
+
         button:active, .win98-button:active {
             border-color: #000 #dfdfdf #dfdfdf #000;
             box-shadow: -1px -1px 0 white inset, 1px 1px 0 #707070 inset;
         }
-        
+
         /* Windows 98 Input Styling */
         input[type="text"] {
             font-family: "MS Sans Serif", sans-serif;
@@ -192,7 +197,7 @@
             background: white;
             border: 2px inset #efefef;
         }
-        
+
         .whatsapp-box {
             background: #c0c0c0;
             padding: 15px;
@@ -202,12 +207,12 @@
             border: 2px outset white;
             margin-top: 20px;
         }
-        
+
         .whatsapp-box img {
             box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
             border: 2px inset white;
         }
-        
+
         .terminal-box {
             background-color: #000;
             color: #00aa00;
@@ -219,27 +224,27 @@
             white-space: pre-wrap;
             box-shadow: inset 0 0 10px rgba(0, 170, 0, 0.5);
         }
-        
+
         .terminal-cursor {
             animation: blink 1s step-start infinite;
         }
-        
+
         @keyframes blink {
             50% { opacity: 0; }
         }
-        
+
         .terminal-box h3 {
             margin-top: 0;
             border-bottom: 1px solid #00aa00;
             padding-bottom: 5px;
         }
-        
+
         .terminal-box code {
             background: transparent;
             font-family: inherit;
             color: #00ff00;
         }
-        
+
         .footer {
             margin-top: 10px;
             font-size: 11px;
@@ -248,7 +253,7 @@
             border-top: 1px solid #808080;
             text-align: center;
         }
-        
+
         .status-bar {
             display: flex;
             justify-content: space-between;
@@ -258,7 +263,7 @@
             font-size: 11px;
             margin-top: 10px;
         }
-        
+
         .status-section {
             border: 1px inset white;
             padding: 2px 5px;
@@ -267,7 +272,7 @@
             margin-right: 5px;
             text-align: left;
         }
-        
+
         .start-button {
             display: flex;
             align-items: center;
@@ -276,21 +281,21 @@
             padding: 2px 8px;
             font-weight: bold;
             font-size: 12px;
-            cursor: pointer;
+            cursor: pointer; /* Use default pointer */
             margin-top: 0;
             margin-bottom: 0;
         }
-        
+
         .start-button img {
             margin-right: 5px;
             width: 20px;
             height: 20px;
         }
-        
+
         .start-button:active {
             border: 2px inset white;
         }
-        
+
         /* Side Desktop Icons */
         .desktop-icons {
             position: fixed;
@@ -301,40 +306,42 @@
             align-items: flex-start;
             z-index: 10;
         }
-        
+
         .desktop-icon {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin: 10px 0;
             width: 70px;
-            cursor: pointer;
+            cursor: pointer; /* Use default pointer */
         }
-        
+
         .desktop-icon img {
             width: 32px;
             height: 32px;
             margin-bottom: 5px;
         }
-        
+
         .desktop-icon-text {
             color: white;
             text-shadow: 1px 1px 1px black;
             font-size: 11px;
             text-align: center;
         }
-        
+
         /* Feature List Style */
         .feature-list {
-            list-style-image: url("bullet.png");
+            /* Use CSS list-style-type or pseudo-elements for bullets */
+            list-style-type: disc; /* Default disc, replace with image if needed */
+            /* list-style-image: url("bullet.png"); */
             padding-left: 25px;
         }
-        
+
         .feature-list li {
             margin-bottom: 8px;
             padding-left: 5px;
         }
-        
+
         /* Dialog Box */
         .dialog {
             position: fixed;
@@ -349,85 +356,101 @@
             display: none;
             z-index: 100;
         }
-        
+
         .dialog-title {
             background: linear-gradient(90deg, #000080, #1084d0);
             color: white;
             padding: 3px 5px;
             font-weight: bold;
         }
-        
+
         .dialog-content {
             padding: 15px;
             text-align: center;
         }
-        
+
         .dialog-buttons {
             display: flex;
             justify-content: center;
             padding: 10px;
         }
-        
+
         /* Hide dialog by default */
         #error-dialog {
             display: none;
         }
-        
+
         /* Error icon */
         .error-icon {
             width: 32px;
             height: 32px;
             margin-right: 10px;
             float: left;
+            /* Add fallback for image */
+            content: url('https://placehold.co/32x32/c0c0c0/000000?text=!');
         }
+        .error-icon[src="error-icon.png"] { /* Style specifically if the src is set */
+             content: normal; /* Override placeholder if src is valid */
+        }
+
 
         /* Start Menu */
         .start-menu {
             position: fixed;
-            bottom: 30px;
+            bottom: 30px; /* Adjust based on taskbar height */
             left: 0;
             width: 220px;
             background: #c0c0c0;
             border: 2px solid;
             border-color: #dfdfdf #000 #000 #dfdfdf;
-            display: none;
+            display: none; /* Initially hidden */
             z-index: 1000;
+            /* Changed to flex for internal layout */
+            flex-direction: column;
         }
-        
+
         .start-menu-header {
-            height: 40px;
+            /* Removed vertical writing mode styles */
             background: linear-gradient(90deg, #000080, #1084d0);
             color: white;
             font-weight: bold;
             display: flex;
             align-items: center;
-            padding-left: 10px;
+            padding: 5px 10px; /* Adjusted padding for horizontal layout */
+            border-bottom: 1px solid #808080; /* Add separator */
+            height: auto; /* Reset height */
         }
-        
+
+        .start-menu-items {
+             /* Removed margin-left as vertical header is gone */
+             padding: 5px 0; /* Add some padding around items */
+        }
+
+
         .start-menu-item {
             display: flex;
             align-items: center;
             padding: 5px 10px;
-            cursor: pointer;
+            cursor: pointer; /* Use default pointer */
         }
-        
+
         .start-menu-item:hover {
             background: #000080;
             color: white;
         }
-        
+
         .start-menu-item img {
             width: 24px;
             height: 24px;
             margin-right: 10px;
         }
-        
+
         .start-menu-divider {
             height: 1px;
             background: #808080;
-            margin: 2px 0;
+            margin: 2px 10px; /* Add horizontal margin */
         }
-        
+
         /* Startup Dialog */
         #startup-dialog {
             position: fixed;
@@ -442,12 +465,21 @@
             justify-content: center;
             align-items: center;
             z-index: 10000;
+            cursor: wait; /* Indicate loading */
         }
-        
+
         .startup-logo {
             margin-bottom: 20px;
         }
-        
+         /* Add fallback for startup logo */
+        .startup-logo img {
+             content: url('https://placehold.co/200x50/000080/ffffff?text=Samware95');
+        }
+        .startup-logo img[src="https://i.ibb.co/84rVz28T/winlogo.png"] {
+             content: normal;
+        }
+
+
         .startup-progress {
             width: 300px;
             height: 20px;
@@ -456,27 +488,27 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .startup-progress-bar {
             position: absolute;
             top: 0;
             left: 0;
             height: 100%;
             width: 0;
-            background: #008080;
+            background: #008080; /* Use teal for progress */
             animation: progress 3s linear forwards;
         }
-        
+
         @keyframes progress {
             0% { width: 0%; }
             100% { width: 100%; }
         }
-        
+
         .startup-text {
             margin-top: 10px;
             font-size: 14px;
         }
-        
+
         /* Loading Animation */
         .loading {
             display: flex;
@@ -485,68 +517,332 @@
             height: 20px;
             width: 100%;
         }
-        
+
         .loading-block {
             width: 10px;
             height: 10px;
-            background-color: #000080;
+            background-color: #000080; /* Use theme color */
             margin: 0 2px;
             animation: loading 1s infinite;
         }
-        
+
         .loading-block:nth-child(2) {
             animation-delay: 0.1s;
         }
-        
+
         .loading-block:nth-child(3) {
             animation-delay: 0.2s;
         }
-        
+
         @keyframes loading {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-5px); }
         }
-        
+
+        /* Taskbar */
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #c0c0c0;
+            border-top: 2px solid white;
+            padding: 2px;
+            display: flex;
+            align-items: center; /* Vertically align items */
+            height: 28px; /* Typical taskbar height */
+            z-index: 999; /* Ensure it's above most content */
+        }
+
+        .taskbar-time {
+            border: 1px inset white;
+            padding: 2px 5px;
+            margin-left: auto; /* Push time to the right */
+            font-size: 11px;
+            background: #c0c0c0; /* Match taskbar */
+            height: 20px; /* Match other elements */
+            line-height: 20px; /* Center text vertically */
+        }
+
+
         /* Responsive Design */
         @media (max-width: 600px) {
             .menu-bar, .toolbar {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .menu-item, .toolbar-button {
                 margin-bottom: 3px;
             }
-            
+
             .window {
                 width: 95%;
                 margin: 10px auto;
             }
-            
+
             .desktop-icons {
-                position: static;
+                position: static; /* Change from fixed */
                 flex-direction: row;
                 justify-content: center;
                 flex-wrap: wrap;
                 margin-top: 10px;
+                padding-bottom: 40px; /* Add padding so icons aren't hidden by taskbar */
             }
-            
+
             .desktop-icon {
                 margin: 5px;
             }
+
+            .start-menu {
+                width: 180px; /* Slightly smaller on mobile */
+            }
+            .taskbar {
+                height: auto; /* Allow taskbar to wrap if needed */
+                padding: 3px;
+            }
+            .taskbar-time {
+                 margin-left: 5px; /* Adjust spacing */
+            }
         }
     </style>
-    
-    <script>
-        // Disable Right-Click
-        document.addEventListener("contextmenu", function (e) {
-            e.preventDefault();
-        });
 
-        // Disable Text Copy
-        document.addEventListener("copy", function (e) {
-            e.preventDefault();
-        });
+</head>
+
+<body>
+    <div id="startup-dialog">
+        <div class="startup-logo">
+            <img src="https://i.ibb.co/84rVz28T/winlogo.png" alt="Windows 98 Logo" width="200"
+                 onerror="this.onerror=null; this.src='https://placehold.co/200x50/000080/ffffff?text=Samware95';">
+        </div>
+        <div class="startup-progress">
+            <div class="startup-progress-bar"></div>
+        </div>
+        <div class="startup-text">Starting Windows 95...</div>
+    </div>
+
+    <div class="desktop-icons">
+        <div class="desktop-icon" tabindex="0"> <img src="https://i.ibb.co/twspQYW8/mycom.png" alt="My Computer" onerror="this.onerror=null; this.src='https://placehold.co/32x32/c0c0c0/000?text=PC';">
+            <div class="desktop-icon-text">My Computer</div>
+        </div>
+        <div class="desktop-icon" tabindex="0">
+            <img src="https://i.ibb.co/TMcqLqQ4/network.png" alt="Network" onerror="this.onerror=null; this.src='https://placehold.co/32x32/c0c0c0/000?text=Net';">
+            <div class="desktop-icon-text">Network</div>
+        </div>
+        <div class="desktop-icon" tabindex="0">
+            <img src="https://i.ibb.co/VYv7Lw4T/bin.png" alt="Recycle Bin" onerror="this.onerror=null; this.src='https://placehold.co/32x32/c0c0c0/000?text=Bin';">
+            <div class="desktop-icon-text">Recycle Bin</div>
+        </div>
+        <div class="desktop-icon" tabindex="0">
+            <img src="https://i.ibb.co/C35F4Rky/sambot.png" alt="SamBot" onerror="this.onerror=null; this.src='https://placehold.co/32x32/c0c0c0/000?text=Bot';">
+            <div class="desktop-icon-text">SamBot</div>
+        </div>
+    </div>
+
+    <div class="window">
+        <div class="title-bar">
+            <div>Samware95 - SamBot Homepage</div>
+            <div class="title-bar-controls">
+                <div class="title-bar-control title-bar-minimize"></div>
+                <div class="title-bar-control title-bar-maximize"></div>
+                <div class="title-bar-control title-bar-close"></div>
+            </div>
+        </div>
+
+        <div class="menu-bar">
+            <div class="menu-item"><u>F</u>ile</div> <div class="menu-item"><u>E</u>dit</div>
+            <div class="menu-item"><u>V</u>iew</div>
+            <div class="menu-item">F<u>a</u>vorites</div>
+            <div class="menu-item"><u>T</u>ools</div>
+            <div class="menu-item"><u>H</u>elp</div>
+        </div>
+
+        <div class="toolbar">
+            <div class="toolbar-button">Back</div>
+            <div class="toolbar-button">Forward</div>
+            <div class="toolbar-button">Refresh</div>
+            <div class="toolbar-button">Home</div>
+            <div class="toolbar-button">Search</div>
+        </div>
+
+        <div class="content">
+            <h2>Welcome to Samware95!</h2>
+            <p><img src="https://i.ibb.co/C35F4Rky/sambot.png" style="float: left; margin-right: 15px; margin-bottom: 10px;" width="48" height="48" alt="SamBot Icon" onerror="this.onerror=null; this.src='https://placehold.co/48x48/ffffff/000?text=SB';">
+               Welcome to <strong>SamBot</strong>, your personal AI assistant for WhatsApp! Experience the power of advanced commands and functionalities that make your digital life easier and more entertaining.</p>
+
+            <div style="clear: both;"></div>
+
+            <h3>What is SamBot?</h3>
+            <p>SamBot is a state-of-the-art WhatsApp chatbot powered by advanced AI technology. Whether you need information, entertainment, or assistance with daily tasks, SamBot has got you covered with its extensive range of commands and features.</p>
+
+            <div class="terminal-box">
+                <h3 style="color: #0ff;">SamBot Command Center:</h3>
+                <div id="terminal-content">
+                    </div>
+            </div>
+
+            <h3>Key Features:</h3>
+            <ul class="feature-list">
+                <li><strong>AI Chat:</strong> Have natural conversations with SamBot about virtually any topic</li>
+                <li><strong>Image Generation:</strong> Create unique images from text descriptions</li>
+                <li><strong>Information Retrieval:</strong> Get instant answers to your questions</li>
+                <li><strong>Fun Commands:</strong> Games, jokes, memes, and entertainment</li>
+                <li><strong>Group Management:</strong> Moderation tools and admin helpers</li>
+                <li><strong>Custom Responses:</strong> Teach SamBot personalized responses</li>
+            </ul>
+
+            <h3>Getting Started:</h3>
+            <p>Adding SamBot to your WhatsApp experience is simple:</p>
+            <ol>
+                <li>Join our WhatsApp group using the link below</li>
+                <li>Type <code>.help</code> to see all available commands</li>
+                <li>Start interacting with SamBot using the command prefix <code>!bot</code></li>
+            </ol>
+
+            <p>For group administrators who want to add SamBot to their own groups, please use the "Add SamBot in your group" button below.</p>
+        </div>
+
+        <div class="whatsapp-box">
+            <img src="https://i.ibb.co/TMdCgNDh/sambot-2.png" alt="WhatsApp Group Icon" style="border: 2px solid black; margin-bottom: 10px;" onerror="this.onerror=null; this.src='https://placehold.co/80x80/c0c0c0/000?text=WA';">
+            <div>WhatsApp Group: <a href="https://chat.whatsapp.com/BEIyUcsPKdNIuBcVSXMzAd" target="_blank" class="win98-button">Join Now</a></div>
+            <p style="font-size: 12px; margin-top: 5px;">Experience SamBot directly in our community group</p>
+        </div>
+
+        <div style="padding: 10px; background: #c0c0c0; border-top: 1px solid #808080;">
+            <div style="display: flex;">
+                <input type="text" id="searchBox" placeholder="Search pages..." style="flex: 1;">
+                <button onclick="searchPages()" class="win98-button">Search</button>
+            </div>
+            <div id="searchResults" style="height: 20px; margin-top: 5px;"></div>
+        </div>
+
+        <div style="text-align: center; padding: 15px; background: #c0c0c0;">
+            <button data-youform-open="gr6jvia5" data-youform-position="center" class="win98-button" style="font-weight: bold; padding: 8px 15px;">
+                Add SamBot in your group
+            </button>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 Samware95. All Rights Reserved. | Last updated: 05/08/25
+        </div>
+    </div>
+
+    <div id="start-menu" class="start-menu">
+        <div class="start-menu-header">
+             Samware 95
+        </div>
+         <div class="start-menu-items">
+            <div class="start-menu-item">
+                <img src="https://i.ibb.co/WpFCP0Tw/programs.png" alt="Programs" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=P';">
+                Programs
+            </div>
+            <div class="start-menu-item">
+                <img src="https://i.ibb.co/QvXH7m74/doc.png" alt="Documents" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=D';">
+                Documents
+            </div>
+            <div class="start-menu-item">
+                <img src="https://i.ibb.co/39jHHMGN/setting.png" alt="Settings" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=S';">
+                Settings
+            </div>
+            <div class="start-menu-item">
+                <img src="https://i.ibb.co/PGNnwbRv/doc-1.png" alt="Find" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=F';">
+                Find
+            </div>
+            <div class="start-menu-item">
+                <img src="https://i.ibb.co/B2V3t4zN/help.png" alt="Help" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=H';">
+                Help
+            </div>
+            <div class="start-menu-item">
+                <img src="https://i.ibb.co/zHZBfKmY/run.png" alt="Run" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=R';">
+                Run...
+            </div>
+            <div class="start-menu-divider"></div>
+            <div class="start-menu-item">
+                <img src="https://i.ibb.co/zWV3L43W/image-2025-05-11-195320766.png" alt="Shut Down" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=SD';">
+                Shut Down...
+            </div>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <button class="start-button" onclick="toggleStartMenu()">
+            <img src="https://i.ibb.co/84rVz28T/winlogo.png" alt="Start" onerror="this.onerror=null; this.src='https://placehold.co/20x20/c0c0c0/000?text=S';">
+            Start
+        </button>
+        <div class="taskbar-time" id="taskbar-time">12:00 PM</div> </div>
+
+    <div id="error-dialog" class="dialog">
+        <div class="dialog-title">SamBot - Error</div>
+        <div class="dialog-content">
+            <svg class="error-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="#FF0000" style="background-color: #c0c0c0;">
+                <path d="M16 2 C8.2 2 2 8.2 2 16 S 8.2 30 16 30 S 30 23.8 30 16 S 23.8 2 16 2 Z M 14.9 8 L 17.1 8 L 17.1 19 L 14.9 19 Z M 16 21 C 15.2 21 14.5 21.3 14 21.8 C 13.5 22.3 13.2 23 13.2 23.8 C 13.2 24.6 13.5 25.3 14 25.8 C 14.5 26.3 15.2 26.6 16 26.6 C 16.8 26.6 17.5 26.3 18 25.8 C 18.5 25.3 18.8 24.6 18.8 23.8 C 18.8 23 18.5 22.3 18 21.8 C 17.5 21.3 16.8 21 16 21 Z"/>
+            </svg>
+            Page not found! The page you're looking for doesn't exist.
+        </div>
+        <div class="dialog-buttons">
+            <button onclick="closeDialog()" class="win98-button">OK</button>
+        </div>
+    </div>
+
+    <div id="whatsapp-popup" class="dialog" style="width: 350px; z-index: 9999;">
+        <div class="dialog-title">Join SamBot WhatsApp Group</div>
+        <div class="dialog-content">
+          <img src="https://i.ibb.co/TMdCgNDh/sambot-2.png" alt="WhatsApp Group Icon" style="width: 80px; height: 80px; display: block; margin: 0 auto 15px;" onerror="this.onerror=null; this.src='https://placehold.co/80x80/c0c0c0/25D366?text=WA';">
+          <p>Would you like to join our WhatsApp group to experience SamBot?</p>
+          <p style="font-size: 11px; margin-top: 10px;">Join our community of over 68 active users and you're the one we need!</p>
+        </div>
+        <div class="dialog-buttons">
+          <button onclick="joinWhatsApp()" class="win98-button" style="background: #25D366; color: white; font-weight: bold;">Join Now</button>
+          <button onclick="closeWhatsAppPopup()" class="win98-button">Maybe Later</button>
+        </div>
+    </div>
+
+    <script>
+        // --- Sound Synthesis Setup ---
+        let soundsReady = false;
+        let startupSynth, clickSynth, chorus, reverb; // Declare effects here
+
+        // Initialize synths (can be done outside user interaction)
+        try {
+            // Effects chain: synth -> chorus -> reverb -> destination
+            reverb = new Tone.Reverb({
+                decay: 1.5, // Decay time in seconds
+                preDelay: 0.01 // Pre-delay before reverb starts
+            }).toDestination();
+
+            chorus = new Tone.Chorus({
+                frequency: 1.5, // LFO frequency for chorus effect
+                delayTime: 3.5, // Delay time in ms
+                depth: 0.7,     // Depth of the chorus effect
+                feedback: 0.1   // Feedback for a thicker chorus
+            }).connect(reverb).start(); // Connect chorus to reverb and start LFO
+
+            // Use a single synth instance for the startup melody
+            startupSynth = new Tone.Synth({
+                oscillator: { type: "triangle" }, // Triangle wave for a softer, chime-like tone
+                envelope: {
+                    attack: 0.02,  // Quick attack
+                    decay: 0.1,   // Short decay
+                    sustain: 0.3, // Moderate sustain
+                    release: 0.6  // Longer release for a more "airy" and resonant sound
+                },
+                volume: -10 // Slightly increased volume for single notes
+            }).connect(chorus); // Connect synth to the chorus effect
+
+            clickSynth = new Tone.Synth({
+                oscillator: { type: "sine" }, // Simple click sound
+                envelope: { attack: 0.001, decay: 0.05, sustain: 0, release: 0.1 },
+                volume: -18 // Lower volume
+            }).toDestination(); // Click sound directly to destination
+
+            soundsReady = true; // Mark synths as ready
+        } catch (error) {
+            console.error("Tone.js initialization failed:", error);
+            // Sounds won't play if Tone.js fails
+        }
+
+
+        // --- Core Functions ---
 
         function searchPages() {
             var query = document.getElementById("searchBox").value.toLowerCase();
@@ -558,11 +854,7 @@
                 "download": "download.html",
                 "faq": "faq.html"
             };
-            
-            // Show loading animation
             document.getElementById("searchResults").innerHTML = '<div class="loading"><div class="loading-block"></div><div class="loading-block"></div><div class="loading-block"></div></div>';
-            
-            // Simulate search delay
             setTimeout(function() {
                 if (pages[query]) {
                     window.location.href = pages[query];
@@ -572,272 +864,150 @@
                 }
             }, 800);
         }
-        
+
         function closeDialog() {
             document.getElementById("error-dialog").style.display = "none";
         }
-        
+
+         function closeWhatsAppPopup() {
+            document.getElementById("whatsapp-popup").style.display = "none";
+        }
+
         function toggleStartMenu() {
             var startMenu = document.getElementById("start-menu");
-            if (startMenu.style.display === "block") {
-                startMenu.style.display = "none";
-            } else {
-                startMenu.style.display = "block";
-            }
+             if (window.getComputedStyle(startMenu).display === "flex") {
+                 startMenu.style.display = "none";
+             } else {
+                 startMenu.style.display = "flex";
+             }
         }
-        
+
+
         function typeEffect(element, text, speed = 50) {
             let i = 0;
             element.innerHTML = "";
-            
             function type() {
                 if (i < text.length) {
                     element.innerHTML += text.charAt(i);
                     i++;
                     setTimeout(type, speed);
                 } else {
-                    element.innerHTML += '<span class="terminal-cursor">█</span>';
+                    if (!element.querySelector('.terminal-cursor')) {
+                         element.innerHTML += '<span class="terminal-cursor">█</span>';
+                    }
                 }
             }
-            
             type();
         }
+
         function joinWhatsApp() {
-    window.open('https://chat.whatsapp.com/BEIyUcsPKdNIuBcVSXMzAd', '_blank');
-    closeWhatsAppPopup();
-    }
-  
-        function closeWhatsAppPopup() {
-    document.getElementById("whatsapp-popup").style.display = "none";
-  }
-  
-  // Modified window.onload function to show WhatsApp popup after startup
-  window.onload = function() {
-    // Show startup dialog
-    var startupDialog = document.getElementById("startup-dialog");
-    
-    // Hide startup dialog after 3 seconds and show WhatsApp popup
-    setTimeout(function() {
-      startupDialog.style.display = "none";
-      // Show WhatsApp popup with a slight delay for better UX
-      setTimeout(function() {
-        document.getElementById("whatsapp-popup").style.display = "block";
-      }, 500);
-    }, 3000);
-    
-    // Get the current time
-    let now = new Date();
-    let timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-    document.getElementById("status-time").innerText = timeString;
-    
-    // Start the terminal typing effect
-    setTimeout(function() {
-      let terminalText = "C:\\> Starting SamBot v2.5...\nC:\\> Loading modules...\nC:\\> System ready!\n\nType .help to see all available commands.";
-      typeEffect(document.getElementById("terminal-content"), terminalText, 30);
-    }, 500);
-  };
-</script>
-</head>
+            window.open('https://chat.whatsapp.com/BEIyUcsPKdNIuBcVSXMzAd', '_blank');
+            closeWhatsAppPopup();
+        }
 
-<body>
-    <!-- Startup Dialog -->
-    <div id="startup-dialog">
-        <div class="startup-logo">
-            <img src="https://i.ibb.co/84rVz28T/winlogo.png" alt="Windows 98" width="200">
-        </div>
-        <div class="startup-progress">
-            <div class="startup-progress-bar"></div>
-        </div>
-        <div class="startup-text">Starting Windows 95...</div>
-    </div>
-    
-    <!-- Side Desktop Icons -->
-    <div class="desktop-icons">
-        <div class="desktop-icon">
-            <img src="https://i.ibb.co/twspQYW8/mycom.png" alt="My Computer">
-            <div class="desktop-icon-text">My Computer</div>
-        </div>
-        <div class="desktop-icon">
-            <img src="https://i.ibb.co/TMcqLqQ4/network.png" alt="Network">
-            <div class="desktop-icon-text">Network</div>
-        </div>
-        <div class="desktop-icon">
-            <img src="https://i.ibb.co/VYv7Lw4T/bin.png" alt="Recycle Bin">
-            <div class="desktop-icon-text">Recycle Bin</div>
-        </div>
-        <div class="desktop-icon">
-            <img src="https://i.ibb.co/C35F4Rky/sambot.png" alt="SamBot">
-            <div class="desktop-icon-text">SamBot</div>
-        </div>
-    </div>
+        // --- Sound Playing Functions ---
+        async function playStartupSound() {
+             if (!soundsReady) return;
+            try {
+                await Tone.start();
+                console.log("AudioContext started for custom startup sound");
 
-    <!-- Main Window -->
-    <div class="window">
-        <div class="title-bar">
-            <div>Samware95 - SamBot Homepage</div>
-            <div class="title-bar-controls">
-                <div class="title-bar-control title-bar-minimize"></div>
-                <div class="title-bar-control title-bar-maximize"></div>
-                <div class="title-bar-control title-bar-close"></div>
-            </div>
-        </div>
-        
-        <div class="menu-bar">
-            <div class="menu-item">File</div>
-            <div class="menu-item">Edit</div>
-            <div class="menu-item">View</div>
-            <div class="menu-item">Favorites</div>
-            <div class="menu-item">Tools</div>
-            <div class="menu-item">Help</div>
-        </div>
-        
-        <div class="toolbar">
-            <div class="toolbar-button">Back</div>
-            <div class="toolbar-button">Forward</div>
-            <div class="toolbar-button">Refresh</div>
-            <div class="toolbar-button">Home</div>
-            <div class="toolbar-button">Search</div>
-        </div>
-        
-        <div class="content">
-            <h2>Welcome to Samware95!</h2>
-            <p><img src="https://i.ibb.co/C35F4Rky/sambot.png" style="float: left; margin-right: 15px; margin-bottom: 10px;" width="48" height="48" alt="SamBot Icon">Welcome to <strong>SamBot</strong>, your personal AI assistant for WhatsApp! Experience the power of advanced commands and functionalities that make your digital life easier and more entertaining.</p>
-            
-            <div style="clear: both;"></div>
-            
-            <h3>What is SamBot?</h3>
-            <p>SamBot is a state-of-the-art WhatsApp chatbot powered by advanced AI technology. Whether you need information, entertainment, or assistance with daily tasks, SamBot has got you covered with its extensive range of commands and features.</p>
-            
-            <div class="terminal-box">
-                <h3 style="color: #0ff;">SamBot Command Center:</h3>
-                <div id="terminal-content">
-                    <!-- Terminal content will be typed here via JS -->
-                </div>
-            </div>
-            
-            <h3>Key Features:</h3>
-            <ul class="feature-list">
-                <li><strong>AI Chat:</strong> Have natural conversations with SamBot about virtually any topic</li>
-                <li><strong>Image Generation:</strong> Create unique images from text descriptions</li>
-                <li><strong>Information Retrieval:</strong> Get instant answers to your questions</li>
-                <li><strong>Fun Commands:</strong> Games, jokes, memes, and entertainment</li>
-                <li><strong>Group Management:</strong> Moderation tools and admin helpers</li>
-                <li><strong>Custom Responses:</strong> Teach SamBot personalized responses</li>
-            </ul>
-            
-            <h3>Getting Started:</h3>
-            <p>Adding SamBot to your WhatsApp experience is simple:</p>
-            <ol>
-                <li>Join our WhatsApp group using the link below</li>
-                <li>Type <code>.help</code> to see all available commands</li>
-                <li>Start interacting with SamBot using the command prefix <code>!bot</code></li>
-            </ol>
-            
-            <p>For group administrators who want to add SamBot to their own groups, please use the "Add SamBot in your group" button below.</p>
-        </div>
+                // Define the melody notes and timing based on user input
+                const melody = [
+                    { note: "G4", duration: "4n", time: 0 },     // Quarter note
+                    { note: "D5", duration: "4n", time: 0.5 },   // Starts after 0.5 sec
+                    { note: "C5", duration: "4n", time: 1.0 },   // Starts after 1.0 sec
+                    { note: "G4", duration: "8n", time: 1.5 },   // Eighth note, quicker
+                    { note: "E4", duration: "8n", time: 1.75 },  // Eighth note
+                    { note: "A4", duration: "4n", time: 2.0 },   // Quarter note
+                    { note: "D5", duration: "2n", time: 2.5 }    // Half note, longer finish
+                ];
 
-        <div class="whatsapp-box">
-            <img src="https://i.ibb.co/TMdCgNDh/sambot-2.png" alt="WhatsApp Group Icon" style="border: 2px solid black; margin-bottom: 10px;">
-            <div>WhatsApp Group: <a href="https://chat.whatsapp.com/BEIyUcsPKdNIuBcVSXMzAd" target="_blank" class="win98-button">Join Now</a></div>
-            <p style="font-size: 12px; margin-top: 5px;">Experience SamBot directly in our community group</p>
-        </div>
+                const now = Tone.now();
 
-        <!-- Search Bar -->
-        <div style="padding: 10px; background: #c0c0c0; border-top: 1px solid #808080;">
-            <div style="display: flex;">
-                <input type="text" id="searchBox" placeholder="Search pages..." style="flex: 1;">
-                <button onclick="searchPages()" class="win98-button">Search</button>
-            </div>
-            <div id="searchResults" style="height: 20px; margin-top: 5px;"></div>
-        </div>
+                // Schedule each note using triggerAttackRelease
+                melody.forEach(item => {
+                    startupSynth.triggerAttackRelease(item.note, item.duration, now + item.time);
+                });
 
-        <!-- YouForm embed -->
-        <div style="text-align: center; padding: 15px; background: #c0c0c0;">
-            <button data-youform-open="gr6jvia5" data-youform-position="center" class="win98-button" style="font-weight: bold; padding: 8px 15px;">
-                Add SamBot in your group
-            </button>
-        </div>
-        
-        <!-- Status Bar -->
-        <div class="status-bar">
-            <div class="status-section">Ready</div>
-            <div class="status-section">Monthly Visitors: 12,548</div>
-            <div class="status-section" id="status-time">12:00 PM</div>
-        </div>
+            } catch (error) {
+                console.error("Error starting Tone.js or playing startup sound:", error);
+            }
+        }
 
-        <div class="footer">
-            &copy; 2025 Samware95. All Rights Reserved. | Last updated: 05/08/25
-        </div>
-    </div>
-    
-    <!-- Start Menu -->
-    <div id="start-menu" class="start-menu">
-        <div class="start-menu-header">
-            Windows 98
-        </div>
-        <div class="start-menu-item">
-            <img src="https://i.ibb.co/WpFCP0Tw/programs.png" alt="Programs">
-            Programs
-        </div>
-        <div class="start-menu-item">
-            <img src="https://i.ibb.co/QvXH7m74/doc.png" alt="Documents">
-            Documents
-        </div>
-        <div class="start-menu-item">
-            <img src="https://i.ibb.co/39jHHMGN/setting.png" alt="Settings">
-            Settings
-        </div>
-        <div class="start-menu-item">
-            <img src="https://i.ibb.co/PGNnwbRv/doc-1.png" alt="Find">
-            Find
-        </div>
-        <div class="start-menu-item">
-            <img src="https://i.ibb.co/B2V3t4zN/help.png" alt="Help">
-            Help
-        </div>
-        <div class="start-menu-item">
-            <img src="https://i.ibb.co/zHZBfKmY/run.png" alt="Run">
-            Run...
-        </div>
-        <div class="start-menu-divider"></div>
-        <div class="start-menu-item">
-            <img src="https://i.ibb.co/zWV3L43W/image-2025-05-11-195320766.png" alt="Shut Down">
-            Shut Down...
-        </div>
-    </div>
-    
-    <!-- Start Button -->
-    <div style="position: fixed; bottom: 0; left: 0; right: 0; background: #c0c0c0; border-top: 2px solid white; padding: 2px; display: flex;">
-        <button class="start-button" onclick="toggleStartMenu()">
-            <img src="https://i.ibb.co/84rVz28T/winlogo.png" alt="Start">
-            Start
-        </button>
-        <div style="flex-grow: 1;"></div>
-    </div>
-    
-    <!-- Error Dialog -->
-    <div id="error-dialog" class="dialog">
-        <div class="dialog-title">SamBot - Error</div>
-        <div class="dialog-content">
-            <img src="error-icon.png" class="error-icon" alt="Error">
-            Page not found! The page you're looking for doesn't exist.
-        </div>
-        <div class="dialog-buttons">
-            <button onclick="closeDialog()" class="win98-button">OK</button>
-        </div>
-    </div>
+        function playClickSound() {
+             if (!soundsReady || Tone.context.state !== 'running') return;
+            try {
+                clickSynth.triggerAttackRelease("C5", "32n", Tone.now());
+            } catch (error) {
+                 console.error("Error playing click sound:", error);
+            }
+        }
 
-    <div id="whatsapp-popup" class="dialog" style="width: 350px; z-index: 9999;">
-        <div class="dialog-title">Join SamBot WhatsApp Group</div>
-        <div class="dialog-content">
-          <img src="https://i.ibb.co/TMdCgNDh/sambot-2.png" alt="WhatsApp Group Icon" style="width: 80px; height: 80px; display: block; margin: 0 auto 15px;">
-          <p>Would you like to join our WhatsApp group to experience SamBot?</p>
-          <p style="font-size: 11px; margin-top: 10px;">Join our community of over 68 active users and you're the one we need!</p>
-        </div>
-        <div class="dialog-buttons">
-          <button onclick="joinWhatsApp()" class="win98-button" style="background: #25D366; color: white; font-weight: bold;">Join Now</button>
-          <button onclick="closeWhatsAppPopup()" class="win98-button">Maybe Later</button>
-        </div>
-      </div>
+        // --- Event Listeners ---
+        document.body.addEventListener('click', function(event) {
+            const target = event.target;
+            const interactiveSelector = 'button, .win98-button, .menu-item, .toolbar-button, .desktop-icon, .start-menu-item, .title-bar-control, a';
+
+            if (target.matches(interactiveSelector) || target.closest(interactiveSelector)) {
+                 if (Tone.context.state === 'running') {
+                     playClickSound();
+                 } else {
+                     Tone.start().then(() => {
+                         console.log("AudioContext started on user click.");
+                         playClickSound();
+                     }).catch(e => console.error("AudioContext could not start:", e));
+                 }
+            }
+
+            const startMenu = document.getElementById("start-menu");
+            const startButton = document.querySelector(".start-button");
+            if (startMenu && window.getComputedStyle(startMenu).display === "flex") {
+                 if (!startMenu.contains(target) && target !== startButton && !startButton.contains(target) ) {
+                     startMenu.style.display = "none";
+                 }
+            }
+        });
+
+
+        // --- Initialization on Window Load ---
+        window.onload = function() {
+            var startupDialog = document.getElementById("startup-dialog");
+
+            setTimeout(function() {
+                if (startupDialog) {
+                    startupDialog.style.display = "none";
+                }
+                playStartupSound(); // Play the new custom startup sound
+                setTimeout(function() {
+                    const whatsappPopup = document.getElementById("whatsapp-popup");
+                    if (whatsappPopup) {
+                         whatsappPopup.style.display = "block";
+                    }
+                }, 300); // Show popup shortly after starting sound
+
+            }, 3000); // Wait for startup animation
+
+            function updateTime() {
+                let now = new Date();
+                let timeString = now.toLocaleTimeString([], { hour: 'numeric', minute:'2-digit' });
+                const timeElement = document.getElementById("taskbar-time");
+                if (timeElement) {
+                    timeElement.innerText = timeElement.innerText = timeString; // Corrected assignment
+                }
+            }
+            updateTime();
+            setInterval(updateTime, 30000);
+
+            setTimeout(function() {
+                const terminalContent = document.getElementById("terminal-content");
+                if (terminalContent) {
+                     let terminalText = "C:\\> Starting SamBot v2.5...\nC:\\> Loading modules...\nC:\\> System ready!\n\nType .help to see all available commands.";
+                     typeEffect(terminalContent, terminalText, 30);
+                }
+            }, 500);
+        };
+
+    </script>
 </body>
 </html>

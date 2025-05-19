@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Samware95 - SamBot: Your personal WhatsApp chatbot with a nostalgic Windows 98 interface">
-    <meta name="keywords" content="Windows 98, Retro Computing, Vintage Web, Classic Design, SamBot, WhatsApp Bot">
+    <meta name="keywords" content="Windows 98, Retro Computing, Vintage Web, Classic Design, SamBot, WhatsApp Bot, Product Catalog">
     <meta name="author" content="Samware95">
     <script src="https://app.youform.com/widgets/widget.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
-    <title>Samware95 - SamBot</title>
+    <title>Samware95 - SamBot & Products</title>
 
     <style>
         /* Windows 98 Style Enhanced */
         @font-face {
             font-family: "MS Sans Serif";
-            /* Note: Using webfontloader like this is less common now. Consider direct font links if possible. */
             src: url("https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"); /* This URL loads a script, not a font file directly */
             font-display: swap;
         }
@@ -26,9 +25,7 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            /* Provide fallback background color if image fails */
             background: #008080 url("bg-pattern.png");
-            /* Provide fallback cursor */
             cursor: url("cursor.png"), default;
         }
 
@@ -54,7 +51,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: default; /* Default cursor for title bar */
+            cursor: default;
         }
 
         .title-bar-controls {
@@ -72,7 +69,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer; /* Use default pointer for controls */
+            cursor: pointer;
         }
 
         .title-bar-control:hover {
@@ -129,10 +126,8 @@
         .menu-item {
             padding: 2px 6px;
             margin-right: 1px;
-            cursor: pointer; /* Use default pointer */
+            cursor: pointer;
             font-size: 12px;
-             /* Added subtle transition for hover effect */
-            transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
         }
 
         .menu-item:hover {
@@ -154,9 +149,7 @@
             border: 2px outset white;
             background: #c0c0c0;
             font-size: 12px;
-            cursor: pointer; /* Use default pointer */
-             /* Added subtle transition for hover effect */
-            transition: border-color 0.1s ease-in-out;
+            cursor: pointer;
         }
 
         .toolbar-button:hover {
@@ -170,7 +163,6 @@
             border: 2px inset white;
         }
 
-        /* Windows 98 Button Styling */
         button, .win98-button {
             font-family: "MS Sans Serif", sans-serif;
             font-size: 12px;
@@ -180,10 +172,8 @@
             border: 2px solid;
             border-color: #dfdfdf #000 #000 #dfdfdf;
             box-shadow: 1px 1px 0 white inset, -1px -1px 0 #707070 inset;
-            cursor: pointer; /* Use default pointer */
+            cursor: pointer;
             margin: 5px;
-             /* Added subtle transition for active state */
-            transition: border-color 0.05s ease-in-out, box-shadow 0.05s ease-in-out;
         }
 
         button:hover, .win98-button:hover {
@@ -195,7 +185,6 @@
             box-shadow: -1px -1px 0 white inset, 1px 1px 0 #707070 inset;
         }
 
-        /* Windows 98 Input Styling */
         input[type="text"] {
             font-family: "MS Sans Serif", sans-serif;
             font-size: 12px;
@@ -287,11 +276,9 @@
             padding: 2px 8px;
             font-weight: bold;
             font-size: 12px;
-            cursor: pointer; /* Use default pointer */
+            cursor: pointer;
             margin-top: 0;
             margin-bottom: 0;
-             /* Added subtle transition for active state */
-            transition: border-color 0.05s ease-in-out;
         }
 
         .start-button img {
@@ -304,7 +291,6 @@
             border: 2px inset white;
         }
 
-        /* Side Desktop Icons */
         .desktop-icons {
             position: fixed;
             top: 50px;
@@ -315,23 +301,13 @@
             z-index: 10;
         }
 
-        .desktop-icon-link {
-             /* Added subtle transition for transform and filter */
-            transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
-        }
-
-        .desktop-icon-link:hover {
-             transform: translateY(-5px); /* Move up slightly on hover */
-             filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5)); /* Add a subtle shadow */
-        }
-
         .desktop-icon {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin: 10px 0;
             width: 70px;
-            cursor: pointer; /* Keep cursor pointer on the link */
+            cursor: pointer;
         }
 
         .desktop-icon img {
@@ -347,11 +323,8 @@
             text-align: center;
         }
 
-        /* Feature List Style */
         .feature-list {
-            /* Use CSS list-style-type or pseudo-elements for bullets */
-            list-style-type: disc; /* Default disc, replace with image if needed */
-            /* list-style-image: url("bullet.png"); */
+            list-style-type: disc;
             padding-left: 25px;
         }
 
@@ -360,7 +333,6 @@
             padding-left: 5px;
         }
 
-        /* Dialog Box */
         .dialog {
             position: fixed;
             top: 50%;
@@ -393,46 +365,33 @@
             padding: 10px;
         }
 
-        /* Hide dialog by default */
         #error-dialog {
             display: none;
         }
 
-        /* Error icon */
         .error-icon {
             width: 32px;
             height: 32px;
             margin-right: 10px;
             float: left;
-            /* Add fallback for image */
             content: url('https://placehold.co/32x32/c0c0c0/000000?text=!');
         }
-        .error-icon[src="error-icon.png"] { /* Style specifically if the src is set */
-             content: normal; /* Override placeholder if src is valid */
+        .error-icon[src="error-icon.png"] {
+             content: normal;
         }
 
-
-        /* Start Menu */
         .start-menu {
             position: fixed;
-            bottom: 30px; /* Adjust based on taskbar height */
+            bottom: 30px;
             left: 0;
             width: 220px;
             background: #c0c0c0;
             border: 2px solid;
             border-color: #dfdfdf #000 #000 #dfdfdf;
-            display: none; /* Initially hidden */
+            display: none;
             z-index: 1000;
             flex-direction: column;
-             /* Added subtle transition for opacity */
-            transition: opacity 0.3s ease-in-out;
-            opacity: 0; /* Start hidden with opacity 0 */
         }
-
-        .start-menu.show {
-            opacity: 1; /* Fade in when show class is added */
-        }
-
 
         .start-menu-header {
             background: linear-gradient(90deg, #000080, #1084d0);
@@ -449,14 +408,11 @@
              padding: 5px 0;
         }
 
-
         .start-menu-item {
             display: flex;
             align-items: center;
             padding: 5px 10px;
-            cursor: pointer; /* Use default pointer */
-             /* Added subtle transition for hover effect */
-            transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+            cursor: pointer;
         }
 
         .start-menu-item:hover {
@@ -470,23 +426,12 @@
             margin-right: 10px;
         }
 
-         /* Style for the anchor tags within start menu items */
-        .start-menu-item a {
-            display: flex; /* Use flex to align image and text */
-            align-items: center;
-            text-decoration: none; /* Remove default underline */
-            color: inherit; /* Inherit text color from parent */
-            width: 100%; /* Make the link fill the container */
-        }
-
-
         .start-menu-divider {
             height: 1px;
             background: #808080;
             margin: 2px 10px;
         }
 
-        /* Startup Dialog */
         #startup-dialog {
             position: fixed;
             top: 0;
@@ -500,28 +445,18 @@
             justify-content: center;
             align-items: center;
             z-index: 10000;
-            cursor: wait; /* Indicate loading */
-             /* Added subtle transition for opacity */
-            transition: opacity 0.5s ease-in-out;
-            opacity: 1; /* Start visible */
+            cursor: wait;
         }
-
-         #startup-dialog.hidden {
-             opacity: 0; /* Fade out when hidden class is added */
-         }
-
 
         .startup-logo {
             margin-bottom: 20px;
         }
-         /* Add fallback for startup logo */
         .startup-logo img {
              content: url('https://placehold.co/200x50/000080/ffffff?text=Samware95');
         }
         .startup-logo img[src="https://i.ibb.co/84rVz28T/winlogo.png"] {
              content: normal;
         }
-
 
         .startup-progress {
             width: 300px;
@@ -538,7 +473,7 @@
             left: 0;
             height: 100%;
             width: 0;
-            background: #008080; /* Use teal for progress */
+            background: #008080;
             animation: progress 3s linear forwards;
         }
 
@@ -552,7 +487,6 @@
             font-size: 14px;
         }
 
-        /* Loading Animation */
         .loading {
             display: flex;
             align-items: center;
@@ -564,7 +498,7 @@
         .loading-block {
             width: 10px;
             height: 10px;
-            background-color: #000080; /* Use theme color */
+            background-color: #000080;
             margin: 0 2px;
             animation: loading 1s infinite;
         }
@@ -582,7 +516,6 @@
             50% { transform: translateY(-5px); }
         }
 
-        /* Taskbar */
         .taskbar {
             position: fixed;
             bottom: 0;
@@ -592,115 +525,127 @@
             border-top: 2px solid white;
             padding: 2px;
             display: flex;
-            align-items: center; /* Vertically align items */
-            height: 28px; /* Typical taskbar height */
-            z-index: 999; /* Ensure it's above most content */
+            align-items: center;
+            height: 28px;
+            z-index: 999;
         }
 
         .taskbar-time {
             border: 1px inset white;
             padding: 2px 5px;
-            margin-left: auto; /* Push time to the right */
+            margin-left: auto;
             font-size: 11px;
-            background: #c0c0c0; /* Match taskbar */
-            height: 20px; /* Match other elements */
-            line-height: 20px; /* Center text vertically */
+            background: #c0c0c0;
+            height: 20px;
+            line-height: 20px;
+        }
+
+        /* Product Catalog Styles */
+        .product-catalog-container {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #808080; /* Separator line */
+        }
+
+        .product-catalog-container h3 {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #000080; /* Dark blue, like title bars */
+        }
+
+        .product-catalog {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 15px; /* Spacing between items */
+        }
+
+        .product-item {
+            background: #c0c0c0; /* Standard window background */
+            border: 2px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf; /* Win98 raised border */
+            box-shadow: 1px 1px 0 #707070; /* Subtle shadow */
+            padding: 10px;
+            width: calc(33.333% - 30px); /* Approx 3 items per row, accounting for gap and padding */
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-item img {
+            width: 120px; /* Increased size */
+            height: 120px; /* Increased size */
+            object-fit: cover;
+            border: 2px inset white; /* Inset border for image */
+            margin-bottom: 10px;
+            background-color: #fff; /* White background for placeholder */
+        }
+
+        .product-item h4 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: black;
+        }
+
+        .product-item p {
+            font-size: 12px;
+            margin-bottom: 10px;
+            color: black;
+            min-height: 36px; /* To allow for 2-3 lines of text */
+            flex-grow: 1; /* Allow description to take available space */
+        }
+         .product-item .win98-button {
+            margin-top: auto; /* Pushes button to the bottom */
         }
 
 
         /* Responsive Design */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) { /* Medium screens / Tablets */
             .menu-bar, .toolbar {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
             .menu-item, .toolbar-button {
                 margin-bottom: 3px;
             }
-
             .window {
                 width: 95%;
                 margin: 10px auto;
             }
-
             .desktop-icons {
-                position: static; /* Change from fixed */
+                position: static;
                 flex-direction: row;
                 justify-content: center;
                 flex-wrap: wrap;
                 margin-top: 10px;
-                padding-bottom: 40px; /* Add padding so icons aren't hidden by taskbar */
+                padding-bottom: 40px;
             }
-
             .desktop-icon {
                 margin: 5px;
             }
-
             .start-menu {
-                width: 180px; /* Slightly smaller on mobile */
+                width: 180px;
             }
             .taskbar {
-                height: auto; /* Allow taskbar to wrap if needed */
+                height: auto;
                 padding: 3px;
             }
             .taskbar-time {
-                 margin-left: 5px; /* Adjust spacing */
+                 margin-left: 5px;
+            }
+            .product-item {
+                width: calc(50% - 25px); /* 2 items per row */
             }
         }
 
-        /* Shutdown Screen Styles */
-        #shutdown-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #000080; /* Dark blue similar to old shutdown screens */
-            color: white;
-            display: none; /* Initially hidden */
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10001; /* Ensure it's above everything */
-            font-size: 18px;
-            text-align: center;
-            opacity: 0; /* Start hidden with opacity 0 for fade-in */
-            transition: opacity 1s ease-in-out; /* Add transition for smooth fade */
-        }
-
-        #shutdown-screen.show {
-            opacity: 1; /* Fade in when show class is added */
-        }
-
-        .shutdown-message {
-            margin-bottom: 20px;
-        }
-
-        #restart-button {
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-         /* Rest of your existing styles... */
-
-        /* Authentic Progress Bar */
-        .startup-progress-bar {
-            background: repeating-linear-gradient(
-                90deg,
-                #008080 0px,
-                #008080 8px,
-                #00a0a0 8px,
-                #00a0a0 16px
-            );
-            animation: progress 3s steps(30) forwards;
-        }
-
-        @media (max-width: 600px) {
-            /* Your existing mobile styles... */
-            .window {
-                width: 95%;
-                margin: 10px auto;
+        @media (max-width: 480px) { /* Small screens / Mobile */
+            .product-item {
+                width: calc(100% - 20px); /* 1 item per row */
             }
         }
     </style>
@@ -716,18 +661,13 @@
         <div class="startup-progress">
             <div class="startup-progress-bar"></div>
         </div>
-        <div class="startup-text">Starting Windows 95...</div>
+        <div class="startup-text">Starting Samware 95...</div>
     </div>
 
     <div class="desktop-icons">
-    <a href="./index.html" class="desktop-icon-link"> <div class="desktop-icon" tabindex="0">
-            <img src="https://i.ibb.co/C35F4Rky/sambot.png" alt="SamBot" onerror="this.onerror=null; this.src='https://placehold.co/32x32/c0c0c0/000?text=Bot';">
-            <div class="desktop-icon-text">SamBot</div>
-        </div>
-    </a>
-        <a href="./shop.html" class="desktop-icon-link"> <div class="desktop-icon" tabindex="0">
+        <a href="#" class="desktop-icon-link"> <div class="desktop-icon" tabindex="0">
                 <img src="https://i.ibb.co/twspQYW8/mycom.png" alt="My Computer" onerror="this.onerror=null; this.src='https://placehold.co/32x32/c0c0c0/000?text=PC';">
-                <div class="desktop-icon-text">Shop</div>
+                <div class="desktop-icon-text">My Computer</div>
             </div>
         </a>
         <a href="#" class="desktop-icon-link"> <div class="desktop-icon" tabindex="0">
@@ -740,11 +680,16 @@
                 <div class="desktop-icon-text">Recycle Bin</div>
             </div>
         </a>
+        <a href="#" class="desktop-icon-link"> <div class="desktop-icon" tabindex="0">
+                <img src="https://i.ibb.co/C35F4Rky/sambot.png" alt="SamBot" onerror="this.onerror=null; this.src='https://placehold.co/32x32/c0c0c0/000?text=Bot';">
+                <div class="desktop-icon-text">SamBot</div>
+            </div>
+        </a>
     </div>
 
     <div class="window">
         <div class="title-bar">
-            <div>Samware95 - SamBot Homepage</div>
+            <div>Samware95 - SamBot & Product Catalog</div>
             <div class="title-bar-controls">
                 <div class="title-bar-control title-bar-minimize"></div>
                 <div class="title-bar-control title-bar-maximize"></div>
@@ -754,42 +699,61 @@
 
         <div class="content">
             <h2>Welcome to Samware95!</h2>
-            <p><img src="https://i.ibb.co/C35F4Rky/sambot.png" style="float: left; margin-right: 15px; margin-bottom: 10px;" width="48" height="48" alt="SamBot Icon" onerror="this.onerror=null; this.src='https://placehold.co/48x48/ffffff/000?text=SB';">
-               Welcome to <strong>SamBot</strong>, your personal AI assistant for WhatsApp! Experience the power of advanced commands and functionalities that make your digital life easier and more entertaining.</p>
 
-            <div style="clear: both;"></div>
-
-            <h3>What is SamBot?</h3>
-            <p>SamBot is a state-of-the-art WhatsApp chatbot powered by advanced AI technology. Whether you need information, entertainment, or assistance with daily tasks, SamBot has got you covered with its extensive range of commands and features.</p>
-
-            <div class="terminal-box">
-                <h3 style="color: #0ff;">SamBot Command Center:</h3>
-                <div id="terminal-content">
+            <div class="product-catalog-container">
+                <h3>Our Products</h3>
+                <div class="product-catalog">
+                    <div class="product-item">
+                        <img src="https://placehold.co/120x120/eeeeee/333333?text=Product+Alpha" alt="Product Alpha" onerror="this.onerror=null; this.src='https://placehold.co/120x120/c0c0c0/000?text=P1';">
+                        <h4>Product Alpha</h4>
+                        <p>The first and finest in our new line of innovative solutions. Experience excellence.</p>
+                        <a href="https://wa.me/12345678900?text=I'm%20interested%20in%20Product%20Alpha" target="_blank">
+                            <button class="win98-button">Buy Now</button>
+                        </a>
                     </div>
+                    <div class="product-item">
+                        <img src="https://placehold.co/120x120/dddddd/333333?text=Product+Beta" alt="Product Beta" onerror="this.onerror=null; this.src='https://placehold.co/120x120/c0c0c0/000?text=P2';">
+                        <h4>Product Beta</h4>
+                        <p>Building on success, Product Beta offers enhanced features for demanding users.</p>
+                        <a href="https://wa.me/12345678900?text=I'm%20interested%20in%20Product%20Beta" target="_blank">
+                            <button class="win98-button">Buy Now</button>
+                        </a>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://placehold.co/120x120/cccccc/333333?text=Product+Gamma" alt="Product Gamma" onerror="this.onerror=null; this.src='https://placehold.co/120x120/c0c0c0/000?text=P3';">
+                        <h4>Product Gamma</h4>
+                        <p>The versatile choice for a wide range of applications. Reliable and robust.</p>
+                        <a href="https://wa.me/12345678900?text=I'm%20interested%20in%20Product%20Gamma" target="_blank">
+                            <button class="win98-button">Buy Now</button>
+                        </a>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://placehold.co/120x120/bbbbbb/333333?text=Product+Delta" alt="Product Delta" onerror="this.onerror=null; this.src='https://placehold.co/120x120/c0c0c0/000?text=P4';">
+                        <h4>Product Delta</h4>
+                        <p>Pushing the boundaries of technology. For those who seek the cutting edge.</p>
+                        <a href="https://wa.me/12345678900?text=I'm%20interested%20in%20Product%20Delta" target="_blank">
+                            <button class="win98-button">Buy Now</button>
+                        </a>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://placehold.co/120x120/aaaaaa/333333?text=Product+Epsilon" alt="Product Epsilon" onerror="this.onerror=null; this.src='https://placehold.co/120x120/c0c0c0/000?text=P5';">
+                        <h4>Product Epsilon</h4>
+                        <p>Compact power. Product Epsilon delivers performance in a small package.</p>
+                        <a href="https://wa.me/12345678900?text=I'm%20interested%20in%20Product%20Epsilon" target="_blank">
+                            <button class="win98-button">Buy Now</button>
+                        </a>
+                    </div>
+                    <div class="product-item">
+                        <img src="https://placehold.co/120x120/999999/ffffff?text=Product+Zeta" alt="Product Zeta" onerror="this.onerror=null; this.src='https://placehold.co/120x120/c0c0c0/000?text=P6';">
+                        <h4>Product Zeta</h4>
+                        <p>The ultimate solution, combining all the best features into one premium product.</p>
+                        <a href="https://wa.me/12345678900?text=I'm%20interested%20in%20Product%20Zeta" target="_blank">
+                            <button class="win98-button">Buy Now</button>
+                        </a>
+                    </div>
+                </div>
             </div>
-
-            <h3>Key Features:</h3>
-            <ul class="feature-list">
-                <li><strong>AI Chat:</strong> Have natural conversations with SamBot about virtually any topic</li>
-                <li><strong>Image Generation:</strong> Create unique images from text descriptions</li>
-                <li><strong>Information Retrieval:</b> Get instant answers to your questions</li>
-                <li><strong>Fun Commands:</strong> Games, jokes, memes, and entertainment</li>
-                <li><strong>Group Management:</strong> Moderation tools and admin helpers</li>
-                <li><strong>Custom Responses:</strong> Teach SamBot personalized responses</li>
-            </ul>
-
-            <h3>Getting Started:</h3>
-            <p>Adding SamBot to your WhatsApp experience is simple:</p>
-            <ol>
-                <li>Join our WhatsApp group using the link below</li>
-                <li>Type <code>.help</code> to see all available commands</li>
-                <li>Start interacting with SamBot using the command prefix <code>!bot</code></li>
-            </ol>
-
-            <p>For group administrators who want to add SamBot to their own groups, please use the "Add SamBot in your group" button below.</p>
-        </div>
-
-        <div class="whatsapp-box">
+            </div> <div class="whatsapp-box">
             <img src="https://i.ibb.co/TMdCgNDh/sambot-2.png" alt="WhatsApp Group Icon" style="border: 2px solid black; margin-bottom: 10px;" onerror="this.onerror=null; this.src='https://placehold.co/80x80/c0c0c0/000?text=WA';">
             <div>WhatsApp Group: <a href="https://chat.whatsapp.com/BEIyUcsPKdNIuBcVSXMzAd" target="_blank" class="win98-button">Join Now</a></div>
             <p style="font-size: 12px; margin-top: 5px;">Experience SamBot directly in our community group</p>
@@ -810,48 +774,40 @@
         </div>
 
         <div class="footer">
-            &copy; 2025 Samware95. All Rights Reserved. | Last updated: 05/08/25
+            &copy; 2025 Samware95. All Rights Reserved. | Last updated: <span id="lastUpdatedDate"></span>
         </div>
-    </div>
-
-    <div id="start-menu" class="start-menu">
+    </div> <div id="start-menu" class="start-menu">
         <div class="start-menu-header">
              Samware 95
         </div>
          <div class="start-menu-items">
             <div class="start-menu-item">
-                <a href="#"> <img src="https://i.ibb.co/WpFCP0Tw/programs.png" alt="Programs" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=P';">
-                    Programs
-                </a>
+                <img src="https://i.ibb.co/WpFCP0Tw/programs.png" alt="Programs" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=P';">
+                Programs
             </div>
             <div class="start-menu-item">
-                <a href="#"> <img src="https://i.ibb.co/QvXH7m74/doc.png" alt="Documents" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=D';">
-                    Documents
-                </a>
+                <img src="https://i.ibb.co/QvXH7m74/doc.png" alt="Documents" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=D';">
+                Documents
             </div>
             <div class="start-menu-item">
-                <a href="#"> <img src="https://i.ibb.co/39jHHMGN/setting.png" alt="Settings" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=S';">
-                    Settings
-                </a>
+                <img src="https://i.ibb.co/39jHHMGN/setting.png" alt="Settings" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=S';">
+                Settings
             </div>
             <div class="start-menu-item">
-                <a href="#"> <img src="https://i.ibb.co/PGNnwbRv/doc-1.png" alt="Find" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=F';">
-                    Find
-                </a>
+                <img src="https://i.ibb.co/PGNnwbRv/doc-1.png" alt="Find" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=F';">
+                Find
             </div>
             <div class="start-menu-item">
-                <a href="#"> <img src="https://i.ibb.co/B2V3t4zN/help.png" alt="Help" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=H';">
-                    Help
-                </a>
+                <img src="https://i.ibb.co/B2V3t4zN/help.png" alt="Help" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=H';">
+                Help
             </div>
             <div class="start-menu-item">
-                <a href="#"> <img src="https://i.ibb.co/zHZBfKmY/run.png" alt="Run" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=R';">
-                    Run...
-                </a>
+                <img src="https://i.ibb.co/zHZBfKmY/run.png" alt="Run" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=R';">
+                Run...
             </div>
             <div class="start-menu-divider"></div>
-            <div class="start-menu-item" id="shutdown-item">
-                 <img src="https://i.ibb.co/zWV3L43W/image-2025-05-11-195320766.png" alt="Shut Down" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=SD';">
+            <div class="start-menu-item">
+                <img src="https://i.ibb.co/zWV3L43W/image-2025-05-11-195320766.png" alt="Shut Down" onerror="this.onerror=null; this.src='https://placehold.co/24x24/c0c0c0/000?text=SD';">
                 Shut Down...
             </div>
         </div>
@@ -891,67 +847,35 @@
         </div>
     </div>
 
-    <div id="shutdown-screen">
-        <div class="shutdown-message">It is now safe to turn off your computer.</div>
-        <button id="restart-button" class="win98-button">Restart</button>
-    </div>
-
     <script>
         // --- Sound Synthesis Setup ---
         let soundsReady = false;
-        let startupSynth, clickSynth, chorus, reverb; // Declare effects here
+        let startupSynth, clickSynth, chorus, reverb;
 
-        // Initialize synths (can be done outside user interaction)
         try {
-            // Effects chain: synth -> chorus -> reverb -> destination
-            reverb = new Tone.Reverb({
-                decay: 1.5, // Decay time in seconds
-                preDelay: 0.01 // Pre-delay before reverb starts
-            }).toDestination();
-
-            chorus = new Tone.Chorus({
-                frequency: 1.5, // LFO frequency for chorus effect
-                delayTime: 3.5, // Delay time in ms
-                depth: 0.7,     // Depth of the chorus effect
-                feedback: 0.1   // Feedback for a thicker chorus
-            }).connect(reverb).start(); // Connect chorus to reverb and start LFO
-
-            // Use a single synth instance for the startup melody
+            reverb = new Tone.Reverb({ decay: 1.5, preDelay: 0.01 }).toDestination();
+            chorus = new Tone.Chorus({ frequency: 1.5, delayTime: 3.5, depth: 0.7, feedback: 0.1 }).connect(reverb).start();
             startupSynth = new Tone.Synth({
-                oscillator: { type: "triangle" }, // Triangle wave for a softer, chime-like tone
-                envelope: {
-                    attack: 0.02,  // Quick attack
-                    decay: 0.1,   // Short decay
-                    sustain: 0.3, // Moderate sustain
-                    release: 0.6  // Longer release for a more "airy" and resonant sound
-                },
-                volume: -10 // Slightly increased volume for single notes
-            }).connect(chorus); // Connect synth to the chorus effect
-
+                oscillator: { type: "triangle" },
+                envelope: { attack: 0.02, decay: 0.1, sustain: 0.3, release: 0.6 },
+                volume: -10
+            }).connect(chorus);
             clickSynth = new Tone.Synth({
-                oscillator: { type: "sine" }, // Simple click sound
+                oscillator: { type: "sine" },
                 envelope: { attack: 0.001, decay: 0.05, sustain: 0, release: 0.1 },
-                volume: -18 // Lower volume
-            }).toDestination(); // Click sound directly to destination
-
-            soundsReady = true; // Mark synths as ready
+                volume: -18
+            }).toDestination();
+            soundsReady = true;
         } catch (error) {
             console.error("Tone.js initialization failed:", error);
-            // Sounds won't play if Tone.js fails
         }
 
-
         // --- Core Functions ---
-
         function searchPages() {
             var query = document.getElementById("searchBox").value.toLowerCase();
             var pages = {
-                "home": "index.html",
-                "about": "about.html",
-                "blog": "blog.html",
-                "contact": "contact.html",
-                "download": "download.html",
-                "faq": "faq.html"
+                "home": "index.html", "about": "about.html", "blog": "blog.html",
+                "contact": "contact.html", "download": "download.html", "faq": "faq.html"
             };
             document.getElementById("searchResults").innerHTML = '<div class="loading"><div class="loading-block"></div><div class="loading-block"></div><div class="loading-block"></div></div>';
             setTimeout(function() {
@@ -968,45 +892,18 @@
             document.getElementById("error-dialog").style.display = "none";
         }
 
-         function closeWhatsAppPopup() {
+        function closeWhatsAppPopup() {
             document.getElementById("whatsapp-popup").style.display = "none";
         }
 
         function toggleStartMenu() {
             var startMenu = document.getElementById("start-menu");
              if (window.getComputedStyle(startMenu).display === "flex") {
-                 // Hide with fade out
-                 startMenu.classList.remove('show');
-                 setTimeout(() => {
-                     startMenu.style.display = "none";
-                 }, 300); // Match CSS transition duration
+                 startMenu.style.display = "none";
              } else {
-                 // Show with fade in
                  startMenu.style.display = "flex";
-                 setTimeout(() => {
-                     startMenu.classList.add('show');
-                 }, 10); // Small delay to allow display change before transition
              }
         }
-
-        // Function to show the shutdown screen with fade-in
-        function showShutdownScreen() {
-            const shutdownScreen = document.getElementById('shutdown-screen');
-            if (shutdownScreen) {
-                shutdownScreen.style.display = 'flex'; // Make it visible
-                // Use a small timeout to allow the display change to register before adding the 'show' class
-                setTimeout(() => {
-                    shutdownScreen.classList.add('show'); // Trigger the fade-in transition
-                }, 10); // A small delay is often needed for transitions triggered by display changes
-                toggleStartMenu(); // Hide the start menu if it's open
-            }
-        }
-
-        // Function to restart (reload the page)
-        function restartComputer() {
-            window.location.reload();
-        }
-
 
         function typeEffect(element, text, speed = 50) {
             let i = 0;
@@ -1035,28 +932,16 @@
              if (!soundsReady) return;
             try {
                 await Tone.start();
-                console.log("AudioContext started for custom startup sound");
-
-                // Define the melody notes and timing based on user input
                 const melody = [
-                    { note: "G4", duration: "4n", time: 0 },     // Quarter note
-                    { note: "D5", duration: "4n", time: 0.5 },   // Starts after 0.5 sec
-                    { note: "C5", duration: "4n", time: 1.0 },   // Starts after 1.0 sec
-                    { note: "G4", duration: "8n", time: 1.5 },   // Eighth note, quicker
-                    { note: "E4", duration: "8n", time: 1.75 },  // Eighth note
-                    { note: "A4", duration: "4n", time: 2.0 },   // Quarter note
-                    { note: "D5", duration: "2n", time: 2.5 }    // Half note, longer finish
+                    { note: "G4", duration: "4n", time: 0 }, { note: "D5", duration: "4n", time: 0.5 },
+                    { note: "C5", duration: "4n", time: 1.0 }, { note: "G4", duration: "8n", time: 1.5 },
+                    { note: "E4", duration: "8n", time: 1.75 }, { note: "A4", duration: "4n", time: 2.0 },
+                    { note: "D5", duration: "2n", time: 2.5 }
                 ];
-
                 const now = Tone.now();
-
-                // Schedule each note using triggerAttackRelease
-                melody.forEach(item => {
-                    startupSynth.triggerAttackRelease(item.note, item.duration, now + item.time);
-                });
-
+                melody.forEach(item => startupSynth.triggerAttackRelease(item.note, item.duration, now + item.time));
             } catch (error) {
-                console.error("Error starting Tone.js or playing startup sound:", error);
+                console.error("Error playing startup sound:", error);
             }
         }
 
@@ -1072,16 +957,13 @@
         // --- Event Listeners ---
         document.body.addEventListener('click', function(event) {
             const target = event.target;
-            // Added .start-menu-item a to the interactive selector
-            const interactiveSelector = 'button, .win98-button, .menu-item, .toolbar-button, .desktop-icon-link, .start-menu-item, .start-menu-item a, .title-bar-control, a';
+            const interactiveSelector = 'button, .win98-button, .menu-item, .toolbar-button, .desktop-icon, .start-menu-item, .title-bar-control, a';
 
             if (target.matches(interactiveSelector) || target.closest(interactiveSelector)) {
-                 // Prevent click sound on the shutdown item itself, as it has its own action
-                 if (!target.closest('#shutdown-item') && Tone.context.state === 'running') {
+                 if (Tone.context.state === 'running') {
                      playClickSound();
-                 } else if (!target.closest('#shutdown-item')) {
+                 } else {
                      Tone.start().then(() => {
-                         console.log("AudioContext started on user click.");
                          playClickSound();
                      }).catch(e => console.error("AudioContext could not start:", e));
                  }
@@ -1091,62 +973,51 @@
             const startButton = document.querySelector(".start-button");
             if (startMenu && window.getComputedStyle(startMenu).display === "flex") {
                  if (!startMenu.contains(target) && target !== startButton && !startButton.contains(target) ) {
-                     toggleStartMenu(); // Use toggleStartMenu to hide with animation
+                     startMenu.style.display = "none";
                  }
             }
         });
 
-        // Add event listener for the Shut Down item in the Start Menu
-        document.getElementById('shutdown-item').addEventListener('click', showShutdownScreen);
-
-        // Add event listener for the Restart button on the shutdown screen
-        document.getElementById('restart-button').addEventListener('click', restartComputer);
-
-
         // --- Initialization on Window Load ---
         window.onload = function() {
             var startupDialog = document.getElementById("startup-dialog");
-
             setTimeout(function() {
-                if (startupDialog) {
-                    // Add 'hidden' class to trigger fade-out
-                    startupDialog.classList.add('hidden');
-                    // Remove the element from display after the transition
-                    startupDialog.addEventListener('transitionend', function() {
-                        startupDialog.style.display = 'none';
-                    }, { once: true }); // Ensure the listener is removed after it runs once
-                }
-                playStartupSound(); // Play the new custom startup sound
+                if (startupDialog) startupDialog.style.display = "none";
+                playStartupSound();
                 setTimeout(function() {
                     const whatsappPopup = document.getElementById("whatsapp-popup");
-                    if (whatsappPopup) {
-                         whatsappPopup.style.display = "block";
-                    }
-                }, 300); // Show popup shortly after starting sound
-
-            }, 3000); // Wait for startup animation
+                    if (whatsappPopup) whatsappPopup.style.display = "block";
+                }, 300);
+            }, 3000);
 
             function updateTime() {
                 let now = new Date();
                 let timeString = now.toLocaleTimeString([], { hour: 'numeric', minute:'2-digit' });
                 const timeElement = document.getElementById("taskbar-time");
-                if (timeElement) {
-                    timeElement.innerText = timeString; // Corrected assignment
-                }
+                if (timeElement) timeElement.innerText = timeString;
             }
             updateTime();
-            setInterval(updateTime, 30000);
+            setInterval(updateTime, 30000); // Update time every 30 seconds
+
+            // Update last updated date
+            const lastUpdatedElement = document.getElementById("lastUpdatedDate");
+            if(lastUpdatedElement){
+                const today = new Date();
+                const day = String(today.getDate()).padStart(2, '0');
+                const month = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                const year = String(today.getFullYear()).slice(-2);
+                lastUpdatedElement.textContent = `${month}/${day}/${year}`;
+            }
+
 
             setTimeout(function() {
                 const terminalContent = document.getElementById("terminal-content");
                 if (terminalContent) {
-                     let terminalText = "C:\\\\> Starting SamBot v2.5...\nC:\\\\> Loading modules...\nC:\\\\> System ready!\n\nType .help to see all available commands.";
+                     let terminalText = "C:\\> Starting SamBot v2.5...\nC:\\> Loading modules...\nC:\\> System ready!\n\nType .help to see all available commands.\n\nScroll down to check out our new products!";
                      typeEffect(terminalContent, terminalText, 30);
                 }
             }, 500);
         };
-
     </script>
 </body>
 </html>
- 

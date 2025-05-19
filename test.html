@@ -11,8 +11,9 @@
     <title>Samware95 - SamBot</title>
 
     <style>
-        /* Windows 98 Style Enhanced */
-        @font-face {
+
+                /* Windows 98 Style Enhanced */
+                @font-face {
             font-family: "MS Sans Serif";
             /* Note: Using webfontloader like this is less common now. Consider direct font links if possible. */
             src: url("https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"); /* This URL loads a script, not a font file directly */
@@ -682,7 +683,124 @@
             font-size: 14px;
         }
 
-         /* Rest of your existing styles... */
+        /* Windows 98 Style Enhanced */
+        @font-face {
+            font-family: "MS Sans Serif";
+            src: url("https://unpkg.com/98.css/fonts/MS-Sans-Serif.woff2") format("woff2"),
+                 url("https://unpkg.com/98.css/fonts/MS-Sans-Serif.woff") format("woff");
+            font-display: swap;
+        }
+
+        body {
+            font-family: "MS Sans Serif", "Pixelated MS Sans Serif", Arial, sans-serif;
+            background-color: #008080;
+            color: black;
+            margin: 0;
+            padding: 0;
+            cursor: url('data:image/x-icon;base64,AAACAAEAICACAAAAAAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAAAEAAAAAAAAAAAAAAgAAAAAAAAAAAAAA////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8AAAA/AAAAfwAAAP+AAAH/gAAB/8AAA//AAAd/wAAGf+AAAH9gAACbYAAA2yAAAZsAAAGbAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//////////8'), default;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* CRT Screen Effect */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0.1) 50%, rgba(0, 0, 0, 0.25) 50%),
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999;
+            pointer-events: none;
+            animation: scanline 6s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100vh; }
+        }
+
+        /* Windows 98 Window Styling */
+        .window {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            background: #c0c0c0;
+            border: 3px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf;
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+            padding: 2px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .window.maximized {
+            width: 100% !important;
+            height: 100vh !important;
+            max-width: none;
+            margin: 0;
+        }
+
+        .title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: white;
+            padding: 3px 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+            user-select: none;
+        }
+
+        .title-bar-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .title-bar-control {
+            width: 16px;
+            height: 14px;
+            border: 1px solid;
+            border-color: #fff #808080 #808080 #fff;
+            background: #c0c0c0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* Keep existing title bar control styles */
+        .title-bar-close::before, .title-bar-close::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 1px;
+            background: black;
+            transform: rotate(45deg);
+        }
+
+        .title-bar-close::after {
+            transform: rotate(-45deg);
+        }
+
+        .title-bar-minimize::before {
+            content: "";
+            width: 8px;
+            height: 1px;
+            background: black;
+            margin-bottom: 3px;
+        }
+
+        .title-bar-maximize::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border: 1px solid black;
+        }
+
+        /* Rest of your existing styles... */
 
         /* Authentic Progress Bar */
         .startup-progress-bar {
@@ -704,10 +822,10 @@
             }
         }
     </style>
-
 </head>
 
 <body>
+    <!-- Keep all your existing body content -->
     <div id="startup-dialog">
         <div class="startup-logo">
             <img src="https://i.ibb.co/84rVz28T/winlogo.png" alt="Windows 98 Logo" width="200"
@@ -895,10 +1013,104 @@
         <div class="shutdown-message">It is now safe to turn off your computer.</div>
         <button id="restart-button" class="win98-button">Restart</button>
     </div>
-
     <script>
-        // --- Sound Synthesis Setup ---
-        let soundsReady = false;
+        // Window Management
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        document.querySelectorAll('.title-bar').forEach(titleBar => {
+            titleBar.addEventListener('mousedown', dragStart);
+            titleBar.addEventListener('mouseup', dragEnd);
+            titleBar.addEventListener('mousemove', drag);
+        });
+
+        function dragStart(e) {
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+            isDragging = true;
+            this.parentElement.style.zIndex = 999;
+        }
+
+        function dragEnd(e) {
+            initialX = currentX;
+            initialY = currentY;
+            isDragging = false;
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                xOffset = currentX;
+                yOffset = currentY;
+                setTranslate(currentX, currentY, this.parentElement);
+            }
+        }
+
+        function setTranslate(xPos, yPos, el) {
+            el.style.left = xPos + 'px';
+            el.style.top = yPos + 'px';
+        }
+
+        // Functional Window Controls
+        document.querySelectorAll('.title-bar-control').forEach(control => {
+            control.addEventListener('click', (e) => {
+                const window = control.closest('.window');
+                if (control.classList.contains('title-bar-close')) {
+                    window.style.display = 'none';
+                } else if (control.classList.contains('title-bar-minimize')) {
+                    window.style.transform = 'translateY(calc(100vh - 50px))';
+                } else if (control.classList.contains('title-bar-maximize')) {
+                    window.classList.toggle('maximized');
+                }
+            });
+        });
+
+        // Enhanced Terminal Simulation
+        const terminalCommands = [
+            "> SYSTEM INITIALIZATION...",
+            "> LOADING SAMBOT v2.5...",
+            "> CHECKING MODULES...... OK",
+            "> MEMORY ALLOCATION..... 512MB",
+            "> READY FOR USER INPUT",
+            "> TYPE '.help' FOR COMMAND LIST"
+        ];
+
+        function simulateTerminal() {
+            let index = 0;
+            const terminal = document.getElementById('terminal-content');
+            
+            function typeNext() {
+                if(index < terminalCommands.length) {
+                    typeEffect(terminal, terminalCommands[index] + '\n', 30);
+                    index++;
+                    setTimeout(typeNext, 1500);
+                }
+            }
+            typeNext();
+        }
+
+        // Update window.onload
+        window.onload = function() {
+            // Your existing initialization code
+            
+            // Add terminal simulation
+            setTimeout(() => {
+                simulateTerminal();
+            }, 500);
+
+            // Add window dragging functionality
+            initializeWindowDrag();
+        };
+
+                // --- Sound Synthesis Setup ---
+                let soundsReady = false;
         let startupSynth, clickSynth, chorus, reverb; // Declare effects here
 
         // Initialize synths (can be done outside user interaction)
@@ -1140,7 +1352,7 @@
             setTimeout(function() {
                 const terminalContent = document.getElementById("terminal-content");
                 if (terminalContent) {
-                     let terminalText = "C:\\\\> Starting SamBot v2.5...\nC:\\\\> Loading modules...\nC:\\\\> System ready!\n\nType .help to see all available commands.";
+                     let terminalText = "C:\\\\> Starting SamBot v2.5...\\nC:\\\\> Loading modules...\\nC:\\\\> System ready!\\n\\nType .help to see all available commands.";
                      typeEffect(terminalContent, terminalText, 30);
                 }
             }, 500);
@@ -1149,4 +1361,3 @@
     </script>
 </body>
 </html>
- 

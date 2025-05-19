@@ -4,103 +4,657 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact Samware95 - Reach out for support, ideas, or just to say hi!">
-    <meta name="keywords" content="Contact, Sam Bot, WhatsApp, Retro, Support">
-    <meta name="author" content="Your Name">
+    <meta name="keywords" content="Contact, Sam Bot, WhatsApp, Support">
+    <meta name="author" content="Samware95">
     <title>Contact - Samware95</title>
-    
+
     <style>
-        /* Windows 98 Style */
+        /* Windows 98 Style Enhanced - Copied from homepage */
+        @font-face {
+            font-family: "MS Sans Serif";
+            src: url("https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js");
+            font-display: swap;
+        }
+
         body {
-            font-family: "MS Sans Serif", sans-serif;
-            background-color: #c0c0c0;
+            font-family: "MS Sans Serif", "Pixelated MS Sans Serif", Arial, sans-serif;
+            background-color: #008080; /* Classic Windows 98 teal */
             color: black;
             margin: 0;
             padding: 0;
             text-align: center;
+            background-image: url("bg-pattern.png"); /* Ensure this file exists */
+            cursor: url("cursor.png"), default; /* Ensure this file exists */
         }
+
+        /* Windows 98 Window Styling - Copied from homepage */
         .window {
             width: 90%;
-            max-width: 600px;
-            margin: 20px auto;
-            background: white;
-            border: 2px solid black;
-            box-shadow: 3px 3px black;
-            padding: 10px;
+            max-width: 800px; /* Adjusted max-width slightly for better content display */
+            margin: 40px auto;
+            background: #c0c0c0;
+            border: 3px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf;
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+            padding: 2px;
+            position: relative;
         }
+
         .title-bar {
-            background: navy;
+            background: linear-gradient(90deg, #000080, #1084d0);
             color: white;
             text-align: left;
-            padding: 5px;
+            padding: 3px 5px;
             font-weight: bold;
-        }
-        .menu {
-            background: silver;
-            padding: 10px;
             display: flex;
-            justify-content: space-around;
-            font-size: 14px;
+            justify-content: space-between;
+            align-items: center;
         }
-        .menu a {
-            text-decoration: none;
-            color: black;
-            padding: 3px 8px;
-            border: 2px outset white;
+
+        .title-bar-controls {
+            display: flex;
         }
-        .menu a:hover {
-            border: 2px inset white;
+
+        .title-bar-control {
+            width: 16px;
+            height: 14px;
+            margin-left: 2px;
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #fff #808080 #808080 #fff;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .title-bar-control:hover {
             background: #ddd;
         }
+
+        .title-bar-close::before, .title-bar-close::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 1px;
+            background: black;
+        }
+
+        .title-bar-close::before {
+            transform: rotate(45deg);
+        }
+
+        .title-bar-close::after {
+            transform: rotate(-45deg);
+        }
+
+        .title-bar-minimize::before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 1px;
+            background: black;
+            bottom: 3px;
+        }
+
+        .title-bar-maximize {
+            position: relative;
+        }
+
+        .title-bar-maximize::before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 1px solid black;
+            border-top-width: 2px;
+            top: 1px;
+        }
+
+        /* Menu Bar Styling - Adapted from homepage toolbar */
+        .menu-bar {
+            background: #c0c0c0;
+            border-bottom: 1px solid #808080;
+            padding: 3px; /* Adjusted padding */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center menu items */
+        }
+
+        .menu-bar a { /* Styling for anchor tags within menu */
+            font-family: "MS Sans Serif", sans-serif;
+            font-size: 12px;
+            padding: 2px 4px; /* Adjusted padding */
+            margin: 0 3px; /* Added margin between items */
+            border: 2px outset white;
+            background: #c0c0c0;
+            color: black;
+            text-decoration: none; /* Remove underline */
+            cursor: pointer;
+        }
+
+        .menu-bar a:hover {
+            border: 2px inset white;
+            background: #d0d0d0; /* Hover background */
+        }
+
+        .menu-bar a:active {
+             border-color: #000 #dfdfdf #dfdfdf #000; /* Active border color */
+             box-shadow: -1px -1px 0 white inset, 1px 1px 0 #707070 inset; /* Active shadow */
+        }
+
         .content {
+            background: white;
             padding: 15px;
             text-align: left;
-        }
-        .email-box, .whatsapp-box {
-            background: silver;
-            padding: 10px;
-            text-align: center;
-            font-size: 16px;
-            font-weight: bold;
             border: 2px inset white;
-            margin-top: 10px;
         }
-        .footer {
-            margin-top: 20px;
+
+        /* Windows 98 Button Styling - Copied from homepage */
+        button, .win98-button {
+            font-family: "MS Sans Serif", sans-serif;
             font-size: 12px;
-            background: silver;
-            padding: 5px;
-            border-top: 2px solid black;
+            padding: 4px 10px;
+            background: #c0c0c0;
+            color: black;
+            border: 2px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf;
+            box-shadow: 1px 1px 0 white inset, -1px -1px 0 #707070 inset;
+            cursor: pointer;
+            margin: 5px;
         }
-        /* Mobile Friendly */
+
+        button:hover, .win98-button:hover {
+            background: #d0d0d0;
+        }
+
+        button:active, .win98-button:active {
+            border-color: #000 #dfdfdf #dfdfdf #000;
+            box-shadow: -1px -1px 0 white inset, 1px 1px 0 #707070 inset;
+        }
+
+        /* Email and WhatsApp Box Styling - Adapted from whatsapp-box on homepage */
+        .contact-box {
+            background: #c0c0c0;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            border: 2px outset white;
+            margin-top: 20px;
+            margin-bottom: 20px; /* Added bottom margin */
+        }
+
+        .contact-box a {
+            color: black; /* Link color */
+            text-decoration: none; /* Remove underline */
+            border-bottom: 1px dashed black; /* Add a subtle underline on hover */
+        }
+
+        .contact-box a:hover {
+            border-bottom: 1px solid black;
+        }
+
+
+        .footer {
+            margin-top: 10px; /* Adjusted margin */
+            font-size: 11px; /* Adjusted font size */
+            background: #c0c0c0; /* Background color */
+            padding: 5px;
+            border-top: 1px solid #808080; /* Border top */
+            text-align: center;
+        }
+
+        /* Dialog Box - Copied from homepage */
+        .dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #c0c0c0;
+            border: 3px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf;
+            padding: 2px;
+            width: 300px;
+            display: none; /* Hidden by default */
+            z-index: 100;
+        }
+
+        .dialog-title {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: white;
+            padding: 3px 5px;
+            font-weight: bold;
+        }
+
+        .dialog-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .dialog-buttons {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        /* Hide dialog by default */
+        #error-dialog {
+            display: none;
+        }
+
+        /* Error icon - Copied from homepage */
+        .error-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+            float: left;
+        }
+
+        /* Side Desktop Icons - Copied from homepage */
+        .desktop-icons {
+            position: fixed;
+            top: 50px;
+            left: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 10;
+        }
+
+        .desktop-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+            width: 70px;
+            cursor: pointer;
+        }
+
+        .desktop-icon img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 5px;
+        }
+
+        .desktop-icon-text {
+            color: white;
+            text-shadow: 1px 1px 1px black;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        /* Start Menu - Copied from homepage */
+        .start-menu {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            width: 220px;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf;
+            display: none;
+            z-index: 1000;
+        }
+
+        .start-menu-header {
+            height: 40px;
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+        }
+
+        .start-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .start-menu-item:hover {
+            background: #000080;
+            color: white;
+        }
+
+        .start-menu-item img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .start-menu-divider {
+            height: 1px;
+            background: #808080;
+            margin: 2px 0;
+        }
+
+        /* Start Button - Copied from homepage */
+        .start-button {
+            display: flex;
+            align-items: center;
+            background: #c0c0c0;
+            border: 2px outset white;
+            padding: 2px 8px;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .start-button img {
+            margin-right: 5px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .start-button:active {
+            border: 2px inset white;
+        }
+
+
+        /* Responsive Design - Copied from homepage and updated */
         @media (max-width: 600px) {
-            .menu {
+            .menu-bar {
                 flex-direction: column;
-                text-align: center;
+                align-items: center; /* Center items in column layout */
             }
-            .menu a {
-                margin: 5px 0;
+
+            .menu-bar a {
+                margin-bottom: 3px;
+            }
+
+            .window {
+                width: 95%;
+                margin: 10px auto;
+            }
+
+            /* Adjust desktop icons for smaller screens */
+            .desktop-icons {
+                position: static; /* Change from fixed to static */
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-top: 10px;
+            }
+
+            .desktop-icon {
+                margin: 5px;
             }
         }
     </style>
 
     <script>
-        // Disable Right-Click
+        // Sound Management System - Copied from homepage
+        const sounds = {
+            startup: "https://od.lk/d/NjNfNzU4NTEzNTJf/Microsoft%20Windows%207%20Startup%20Sound.mp3",
+            error: "https://www.winhistory.de/more/winstart/mp3/error.mp3",
+            click: "https://www.winhistory.de/more/winstart/mp3/click.mp3",
+            navigate: "https://www.winhistory.de/more/winstart/mp3/navigate.mp3",
+            maximize: "https://www.winhistory.de/more/winstart/mp3/maximize.mp3",
+            minimize: "https://www.winhistory.de/more/winstart/mp3/minimize.mp3",
+            close: "https://www.winhistory.de/more/winstart/mp3/close.mp3",
+            alert: "https://www.winhistory.de/more/winstart/mp3/alert.mp3",
+            startmenu: "https://www.winhistory.de/more/winstart/mp3/start.mp3",
+            shutdown: "https://www.winhistory.de/more/winstart/mp3/shutdown.mp3",
+            typing: "https://www.winhistory.de/more/winstart/mp3/type.mp3"
+        };
+
+        // Sound Cache for better performance - Copied from homepage
+        const soundCache = {};
+        let soundEnabled = true; // Assume sound is enabled by default
+
+        function preloadSounds() {
+            for (const [key, url] of Object.entries(sounds)) {
+                soundCache[key] = new Audio(url);
+                if (key === 'typing') {
+                    soundCache[key].volume = 0.2;
+                }
+            }
+        }
+
+        function playSound(soundName) {
+            if (!soundEnabled) return;
+
+            if (soundCache[soundName]) {
+                const sound = soundCache[soundName].cloneNode();
+                if (soundName === 'typing') {
+                    sound.volume = 0.1;
+                }
+                sound.play().catch(e => {
+                    console.log("Sound play prevented by browser policy. User interaction needed first.");
+                });
+            }
+        }
+
+        // Function to toggle sound (optional on contact page, but included for consistency)
+        function toggleSound() {
+             soundEnabled = !soundEnabled;
+             // You might want to add a visual indicator for sound status
+             console.log("Sound Enabled:", soundEnabled);
+             if (soundEnabled) {
+                 playSound('navigate'); // Play a sound when turning on
+             }
+         }
+
+
+        // Disable Right-Click with sound - Copied from homepage
         document.addEventListener("contextmenu", function (e) {
             e.preventDefault();
+            playSound('error');
         });
 
-        // Disable Text Copy
+        // Disable Text Copy with sound - Copied from homepage
         document.addEventListener("copy", function (e) {
             e.preventDefault();
+            playSound('error');
         });
+
+        // Function to close the generic dialog - Copied from homepage
+        function closeDialog() {
+            playSound('click');
+            document.getElementById("error-dialog").style.display = "none";
+        }
+
+        // Function to toggle the start menu - Copied from homepage
+        function toggleStartMenu() {
+            var startMenu = document.getElementById("start-menu");
+            console.log("Start menu button clicked. Current display:", startMenu.style.display); // Log current display
+            if (startMenu.style.display === "block") {
+                startMenu.style.display = "none";
+                playSound('click');
+                console.log("Setting display to none."); // Log change
+            } else {
+                startMenu.style.display = "block";
+                playSound('startmenu');
+                console.log("Setting display to block."); // Log change
+            }
+        }
+
+        // Function to show shutdown screen (adapted for this page)
+         function showShutdownScreen() {
+             // Create shutdown screen
+             const shutdownScreen = document.createElement('div');
+             shutdownScreen.id = 'shutdown-screen';
+             shutdownScreen.style.position = 'fixed';
+             shutdownScreen.style.top = '0';
+             shutdownScreen.style.left = '0';
+             shutdownScreen.style.width = '100%';
+             shutdownScreen.style.height = '100%';
+             shutdownScreen.style.backgroundColor = '#000080';
+             shutdownScreen.style.color = 'white';
+             shutdownScreen.style.display = 'flex';
+             shutdownScreen.style.flexDirection = 'column';
+             shutdownScreen.style.justifyContent = 'center';
+             shutdownScreen.style.alignItems = 'center';
+             shutdownScreen.style.zIndex = '10001';
+
+             shutdownScreen.innerHTML = `
+                 <div style="font-size: 24px; margin-bottom: 20px;">It's now safe to turn off your computer.</div>
+                 <button onclick="location.reload()" class="win98-button" style="margin-top: 30px;">Restart</button>
+             `;
+
+             document.body.appendChild(shutdownScreen);
+             playSound('shutdown');
+         }
+
+         // Function to close the main window (adapted for this page)
+         function closeWindow() {
+             playSound('close');
+             const mainWindow = document.querySelector('.window');
+             mainWindow.style.transition = 'transform 0.5s, opacity 0.5s';
+             mainWindow.style.transform = 'scale(0.8)';
+             mainWindow.style.opacity = '0';
+
+             setTimeout(() => {
+                 showShutdownScreen();
+             }, 500);
+         }
+
+         // Function to minimize the main window (placeholder)
+         function minimizeWindow() {
+              playSound('minimize');
+              // Add minimize animation/logic here if needed
+              console.log("Minimize clicked");
+              // For now, just hide the window
+              document.querySelector('.window').style.display = 'none';
+         }
+
+         // Function to maximize the main window (placeholder)
+         function maximizeWindow() {
+              playSound('maximize');
+              // Add maximize animation/logic here if needed
+              console.log("Maximize clicked");
+              // For now, do nothing or show error
+               document.getElementById("error-dialog").style.display = "block";
+         }
+
+
+        // Add sound effects to interactive elements
+        function addSoundEffects() {
+            // Menu links
+            document.querySelectorAll('.menu-bar a').forEach(link => {
+                link.addEventListener('click', () => playSound('navigate'));
+            });
+
+            // Contact links
+             document.querySelectorAll('.contact-box a').forEach(link => {
+                 link.addEventListener('click', () => playSound('click'));
+             });
+
+            // Dialog buttons
+             document.querySelectorAll('.dialog-buttons button').forEach(button => {
+                 button.addEventListener('click', () => playSound('click'));
+             });
+
+            // Start button - Event listener added here
+            document.querySelector('.start-button').addEventListener('click', toggleStartMenu);
+
+            // Desktop icons (assuming they link somewhere, otherwise show error)
+            document.querySelectorAll('.desktop-icon a').forEach(link => {
+                 link.addEventListener('click', (event) => {
+                     playSound('click');
+                     // If the link is just '#' or empty, show the error dialog
+                     if (link.getAttribute('href') === '#' || link.getAttribute('href') === '') {
+                          event.preventDefault(); // Prevent default if showing error
+                          document.getElementById("error-dialog").style.display = "block";
+                     }
+                     // Otherwise, the default link navigation will occur
+                 });
+             });
+
+            // Start menu items (show error for most, handle shutdown)
+             document.querySelectorAll('.start-menu-item').forEach(item => {
+                 item.addEventListener('click', () => {
+                     playSound('navigate');
+                     // If it's Shut Down option
+                     if (item.textContent.includes('Shut Down')) {
+                         setTimeout(() => closeWindow(), 300);
+                     } else {
+                         // Show "feature not available" for other menu items
+                         document.getElementById("error-dialog").style.display = "block";
+                         document.getElementById("start-menu").style.display = "none"; // Hide menu after click
+                     }
+                 });
+             });
+
+            // Window controls
+            document.querySelector('.title-bar-minimize').addEventListener('click', minimizeWindow);
+            document.querySelector('.title-bar-maximize').addEventListener('click', maximizeWindow);
+            document.querySelector('.title-bar-close').addEventListener('click', closeWindow);
+        }
+
+
+        // Initialize sounds and effects on window load
+        window.onload = function() {
+            preloadSounds();
+            addSoundEffects();
+
+            // You can add a specific sound for page load if desired
+            // playSound('navigate');
+
+            // Optional: Update status bar time if you add a status bar
+             // let now = new Date();
+             // let timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+             // document.getElementById("status-time").innerText = timeString;
+             // setInterval(() => {
+             //     let now = new Date();
+             //     let timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+             //     document.getElementById("status-time").innerText = timeString;
+             // }, 60000);
+        };
     </script>
 </head>
 
 <body>
+    <audio id="clickSound" src="https://www.winhistory.de/more/winstart/mp3/click.mp3" preload="auto"></audio>
+    <audio id="navigateSound" src="https://www.winhistory.de/more/winstart/mp3/navigate.mp3" preload="auto"></audio>
+    <audio id="errorSound" src="https://www.winhistory.de/more/winstart/mp3/error.mp3" preload="auto"></audio>
+    <audio id="startmenuSound" src="https://www.winhistory.de/more/winstart/mp3/start.mp3" preload="auto"></audio>
+    <audio id="shutdownSound" src="https://www.winhistory.de/more/winstart/mp3/shutdown.mp3" preload="auto"></audio>
+    <audio id="minimizeSound" src="https://www.winhistory.de/more/winstart/mp3/minimize.mp3" preload="auto"></audio>
+    <audio id="maximizeSound" src="https://www.winhistory.de/more/winstart/mp3/maximize.mp3" preload="auto"></audio>
+    <audio id="closeSound" src="https://www.winhistory.de/more/winstart/mp3/close.mp3" preload="auto"></audio>
+
+
+    <div class="desktop-icons">
+        <div class="desktop-icon">
+            <a href="#"> <img src="https://i.ibb.co/twspQYW8/mycom.png" alt="My Computer">
+                <div class="desktop-icon-text">My Computer</div>
+            </a>
+        </div>
+        <div class="desktop-icon">
+            <a href="#"> <img src="https://i.ibb.co/TMcqLqQ4/network.png" alt="Network">
+                <div class="desktop-icon-text">Network</div>
+            </a>
+        </div>
+        <div class="desktop-icon">
+            <a href="#"> <img src="https://i.ibb.co/VYv7Lw4T/bin.png" alt="Recycle Bin">
+                <div class="desktop-icon-text">Recycle Bin</div>
+            </a>
+        </div>
+        <div class="desktop-icon">
+            <a href="#"> <img src="https://i.ibb.co/C35F4Rky/sambot.png" alt="SamBot">
+                <div class="desktop-icon-text">SamBot</div>
+            </a>
+        </div>
+    </div>
+
     <div class="window">
-        <div class="title-bar">Contact - Samware95</div>
-        
-        <div class="menu">
+        <div class="title-bar">
+            <div>Contact - Samware95</div>
+             <div class="title-bar-controls">
+                 <div class="title-bar-control title-bar-minimize" onclick="minimizeWindow()"></div>
+                 <div class="title-bar-control title-bar-maximize" onclick="maximizeWindow()"></div>
+                 <div class="title-bar-control title-bar-close" onclick="closeWindow()"></div>
+             </div>
+        </div>
+
+        <div class="menu-bar">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="blog.html">Blog</a>
@@ -110,17 +664,17 @@
         <div class="content">
             <h2>Contact Us</h2>
             <p>Have a question, idea, or just want to say hi? Reach out to the Samware95 team using the links below.</p>
-            
-            <div class="email-box">
-                Email: <a href="mailto:bot@sam.us.eu.org">bot@sam.us.eu.org</a>
+
+            <div class="contact-box">
+                Email: <a href="mailto:sambot@softmail.pro">sambot@softmail.pro</a>
             </div>
 
-            <div class="whatsapp-box">
+            <div class="contact-box">
                 WhatsApp: <a href="https://wa.me/+917777078622" target="_blank">Click to Chat with Sam</a>
             </div>
 
-            <div class="whatsapp-box">
-                WhatsApp Group: <a href="https://chat.whatsapp.com/BEIyUcsPKdNIuBcVSXMzAd" target="_blank">Join</a>
+            <div class="contact-box">
+                WhatsApp: <a href="https://wa.me/+917599920290" target="_blank">Click to Chat with Sam Bot</a>
             </div>
 
             <p>We'll try to respond as fast as Sam does — usually within 24-48 hours!</p>
@@ -130,5 +684,58 @@
             &copy; 2025 Samware95. Powered by nostalgia and bot logic 💾🤖
         </div>
     </div>
-</body>
+
+    <div id="error-dialog" class="dialog">
+        <div class="dialog-title">SamBot - Error</div>
+        <div class="dialog-content">
+            <img src="error-icon.png" class="error-icon" alt="Error"> An unexpected error occurred.
+        </div>
+        <div class="dialog-buttons">
+            <button onclick="closeDialog()" class="win98-button">OK</button>
+        </div>
+    </div>
+
+    <div id="start-menu" class="start-menu">
+        <div class="start-menu-header">
+            Windows 98
+        </div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/WpFCP0Tw/programs.png" alt="Programs">
+            Programs
+        </div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/QvXH7m74/doc.png" alt="Documents">
+            Documents
+        </div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/39jHHMGN/setting.png" alt="Settings">
+            Settings
+        </div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/PGNnwbRv/doc-1.png" alt="Find">
+            Find
+        </div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/B2V3t4zN/help.png" alt="Help">
+            Help
+        </div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/zHZBfKmY/run.png" alt="Run">
+            Run...
+        </div>
+        <div class="start-menu-divider"></div>
+        <div class="start-menu-item">
+            <img src="https://i.ibb.co/zWV3L43W/image-2025-05-11-195320766.png" alt="Shut Down">
+            Shut Down...
+        </div>
+    </div>
+
+    <div style="position: fixed; bottom: 0; left: 0; right: 0; background: #c0c0c0; border-top: 2px solid white; padding: 2px; display: flex;">
+        <button class="start-button"> <img src="https://i.ibb.co/84rVz28T/winlogo.png" alt="Start">
+            Start
+        </button>
+        <div style="flex-grow: 1;"></div>
+         </div>
+
+    </body>
 </html>

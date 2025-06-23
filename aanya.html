@@ -70,10 +70,10 @@
     <!-- Music Modal -->
     <div id="music-modal" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50">
         <div class="text-center bg-white p-10 rounded-2xl shadow-2xl transform transition-all scale-100">
-            <h2 class="text-3xl font-pacifico text-pink-500 mb-4">A Special Surprise for Aanya hehe</h2>
+            <h2 class="text-3xl font-pacifico text-pink-500 mb-4">A Special Surprise for Aanya!</h2>
             <p class="text-gray-700 mb-6">Click the button to start!</p>
             <button id="play-music-button" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:scale-110 transition-transform">
-                Start the Music!
+                Click Me!
             </button>
         </div>
     </div>
@@ -84,20 +84,20 @@
         <!-- Header Title -->
         <header class="py-12">
             <h1 class="text-6xl md:text-8xl font-great-vibes text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
-                Happy Birthday, Aanya!
+                Happy Birthday Aanya!
             </h1>
         </header>
 
         <!-- Birthday Message -->
         <section class="my-10 bg-white bg-opacity-50 backdrop-blur-sm rounded-2xl p-8 max-w-3xl mx-auto shadow-lg">
             <p class="text-2xl md:text-3xl font-dancing-script text-purple-700 leading-relaxed">
-                Dearest Aanya,
+                Cutie Aanya,
             </p>
             <p class="text-lg md:text-xl text-gray-700 mt-4 leading-loose">
-                On your special day, we wish you a world of happiness, a universe of joy, and a lifetime of love. May your birthday be as beautiful and radiant as you are. You fill our lives with so much light and laughter, and we are so incredibly grateful for you. Keep shining, keep smiling, and never forget how truly special you are.
+                On your special day, I wish you a world of happiness, a universe of joy, and a lifetime of love. May your birthday be as beautiful and radiant as you are. You fill our lives with so much light and laughter, and I am so incredibly grateful for you. Keep shining, keep smiling, and never forget how truly special you are.
             </p>
             <p class="text-xl md:text-2xl font-dancing-script text-pink-600 mt-6">
-                With all my pyaar, Happy Birthday Aanya!
+                With all mera pyaar, Happy Birthday!
             </p>
         </section>
 
@@ -105,10 +105,13 @@
         <section class="my-10 max-w-2xl mx-auto">
             <div id="image-slider" class="relative w-full h-96 bg-white bg-opacity-50 rounded-2xl shadow-lg overflow-hidden">
                 <!-- IMPORTANT: Replace these placeholder image URLs with Aanya's actual photos -->
-                <img src="https://placehold.co/600x400/f8bbd0/4a148c?text=Aanya's+Pic+1" alt="Aanya's Picture 1" class="slider-image absolute top-0 left-0 w-full h-full object-cover opacity-100">
-                <img src="https://placehold.co/600x400/e1bee7/ffffff?text=Aanya's+Pic+2" alt="Aanya's Picture 2" class="slider-image absolute top-0 left-0 w-full h-full object-cover opacity-0">
-                <img src="https://placehold.co/600x400/f48fb1/311b92?text=Aanya's+Pic+3" alt="Aanya's Picture 3" class="slider-image absolute top-0 left-0 w-full h-full object-cover opacity-0">
-                <img src="https://placehold.co/600x400/ce93d8/ffffff?text=Aanya's+Pic+4" alt="Aanya's Picture 4" class="slider-image absolute top-0 left-0 w-full h-full object-cover opacity-0">
+                <img src="https://i.ibb.co/C5nvVCK4/Whats-App-Image-2025-06-24-at-12-56-06-AM-2.jpg" alt="Aanya's Picture 1" class="slider-image absolute top-0 left-0 w-full h-full object-cover opacity-100">
+                <img src="https://i.ibb.co/PvxQFz67/Whats-App-Image-2025-06-24-at-12-56-06-AM-1.jpg" alt="Aanya's Picture 2" class="slider-image absolute top-0 left-0 w-full h-full object-cover opacity-0">
+                <img src="https://i.ibb.co/zhxSmF0k/Whats-App-Image-2025-06-24-at-12-56-06-AM.jpg" alt="Aanya's Picture 3" class="slider-image absolute top-0 left-0 w-full h-full object-cover opacity-0">
+                <img src="https://i.ibb.co/TMZ44XS9/Whats-App-Image-2025-06-24-at-12-56-05-AM-2.jpg" alt="Aanya's Picture 4" class="slider-image absolute top-0 left-0 w-full h-full object-cover opacity-0">
+                <img src="https://i.ibb.co/XkskY5Lt/Whats-App-Image-2025-06-24-at-12-56-05-AM-1.jpg" alt="Aanya's Picture 4" class="slider-image absolute top-0 left-0 w-full h-full object-cover opacity-0">
+                <img src="https://i.ibb.co/2rqTm1y/Whats-App-Image-2025-06-24-at-12-56-05-AM.jpg" alt="Aanya's Picture 4" class="slider-image absolute top-0 left-0 w-full h-full object-cover opacity-0">
+                <img src="https://i.ibb.co/nNkYTY4Y/Whats-App-Image-2025-06-24-at-12-27-48-AM.jpg" alt="Aanya's Picture 4" class="slider-image absolute top-0 left-0 w-full h-full object-cover opacity-0">
             </div>
         </section>
 
@@ -123,19 +126,43 @@
             const confettiContainer = document.getElementById('confetti-container');
 
             // --- Music Setup (Tone.js) ---
-            // IMPORTANT: Replace the URL below with your publicly accessible .mp3 file URL.
-            const musicUrl = 'https://od.lk/s/NjNfNzY1MDY5NThf/Happy-Birthday-Official-Video-Sh-%5BAudioTrimmer.com%5D.mp3';
+            const synth = new Tone.Synth({
+                oscillator: { type: 'sine' },
+                envelope: { attack: 0.005, decay: 0.1, sustain: 0.3, release: 1 }
+            }).toDestination();
 
-            const player = new Tone.Player(musicUrl).toDestination();
-            player.loop = true; // Make the music loop continuously
+            const melody = [
+                { note: 'C4', duration: '8n', time: '0:0' }, { note: 'C4', duration: '8n', time: '0:1' },
+                { note: 'D4', duration: '4n', time: '0:2' }, { note: 'C4', duration: '4n', time: '0:4' },
+                { note: 'F4', duration: '4n', time: '0:6' }, { note: 'E4', duration: '2n', time: '0:8' },
+
+                { note: 'C4', duration: '8n', time: '1:0' }, { note: 'C4', duration: '8n', time: '1:1' },
+                { note: 'D4', duration: '4n', time: '1:2' }, { note: 'C4', duration: '4n', time: '1:4' },
+                { note: 'G4', duration: '4n', time: '1:6' }, { note: 'F4', duration: '2n', time: '1:8' },
+
+                { note: 'C4', duration: '8n', time: '2:0' }, { note: 'C4', duration: '8n', time: '2:1' },
+                { note: 'C5', duration: '4n', time: '2:2' }, { note: 'A4', duration: '4n', time: '2:4' },
+                { note: 'F4', duration: '4n', time: '2:6' }, { note: 'E4', duration: '4n', time: '2:8' },
+                { note: 'D4', duration: '4n', time: '2:10' },
+
+                { note: 'A#4', duration: '8n', time: '3:0' }, { note: 'A#4', duration: '8n', time: '3:1' },
+                { note: 'A4', duration: '4n', time: '3:2' }, { note: 'F4', duration: '4n', time: '3:4' },
+                { note: 'G4', duration: '4n', time: '3:6' }, { note: 'F4', duration: '2n', time: '3:8' }
+            ];
+
+            const sequence = new Tone.Part((time, value) => {
+                synth.triggerAttackRelease(value.note, value.duration, time);
+            }, melody);
+            
+            sequence.loop = true;
+            sequence.loopEnd = '4m';
 
             // --- Event Listener for the Music Button ---
             playButton.addEventListener('click', async () => {
-                // Start audio context, required by modern browsers
+                // Start audio context and music
                 await Tone.start();
-                
-                // Start the music player
-                player.start();
+                Tone.Transport.start();
+                sequence.start(0);
 
                 // Fade out modal
                 musicModal.style.transition = 'opacity 0.5s ease-out';

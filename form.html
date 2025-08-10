@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Samware95 - Submit a form through our retro Windows 98 interface.">
+    <meta name="keywords" content="Windows 98, Retro Computing, Form, Contact, SamBot, WhatsApp Bot">
+    <meta name="author" content="Samware95">
+    
+    <!-- YouForm widget script as requested -->
+    <script src="https://app.youform.com/widgets/widget.js"></script>
+    
+    <!-- Tone.js for sound effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    
+    <title>Samware95 - Form</title>
+
+    <style>
+        /* Windows 98 Style Enhanced - Consistent with your other pages */
+        @font-face {
+            font-family: "MS Sans Serif";
+            src: url("https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js");
+            font-display: swap;
+        }
+
+        body {
+            font-family: "MS Sans Serif", "Pixelated MS Sans Serif", Arial, sans-serif;
+            background-color: #008080; /* Classic Windows 98 teal */
+            color: black;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #008080 url("bg-pattern.png");
+            cursor: url("cursor.png"), default;
+        }
+
+        /* Windows 98 Window Styling */
+        .window {
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            background: #c0c0c0;
+            border: 3px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf;
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+            padding: 2px;
+            position: relative;
+        }
+
+        .title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: white;
+            text-align: left;
+            padding: 3px 5px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: default;
+        }
+
+        .title-bar-controls {
+            display: flex;
+        }
+
+        .title-bar-control {
+            width: 16px;
+            height: 14px;
+            margin-left: 2px;
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #fff #808080 #808080 #fff;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .title-bar-control:hover {
+            background: #ddd;
+        }
+
+        .title-bar-close::before, .title-bar-close::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 1px;
+            background: black;
+        }
+
+        .title-bar-close::before {
+            transform: rotate(45deg);
+        }
+
+        .title-bar-close::after {
+            transform: rotate(-45deg);
+        }
+
+        .title-bar-minimize::before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 1px;
+            background: black;
+            bottom: 3px;
+        }
+
+        .title-bar-maximize {
+            position: relative;
+        }
+
+        .title-bar-maximize::before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 1px solid black;
+            border-top-width: 2px;
+            top: 1px;
+        }
+
+        .content {
+            background: white;
+            padding: 25px;
+            text-align: center; /* Center content for the form button */
+            border: 2px inset white;
+        }
+
+        /* Windows 98 Button Styling */
+        button, .win98-button {
+            font-family: "MS Sans Serif", sans-serif;
+            font-size: 12px;
+            padding: 8px 20px; /* Larger padding for a primary action button */
+            background: #c0c0c0;
+            color: black;
+            border: 2px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf;
+            box-shadow: 1px 1px 0 white inset, -1px -1px 0 #707070 inset;
+            cursor: pointer;
+            margin: 15px 5px; /* More margin around the button */
+            font-weight: bold;
+        }
+
+        button:hover, .win98-button:hover {
+            background: #d0d0d0;
+        }
+
+        button:active, .win98-button:active {
+            border-color: #000 #dfdfdf #dfdfdf #000;
+            box-shadow: -1px -1px 0 white inset, 1px 1px 0 #707070 inset;
+        }
+
+        .footer {
+            margin-top: 10px;
+            font-size: 11px;
+            background: #c0c0c0;
+            padding: 5px;
+            border-top: 1px solid #808080;
+            text-align: center;
+        }
+
+        /* Side Desktop Icons */
+        .desktop-icons {
+            position: fixed;
+            top: 50px;
+            left: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 10;
+        }
+        
+        .desktop-icon-link {
+            transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+        }
+
+        .desktop-icon-link:hover {
+             transform: translateY(-5px);
+             filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.5));
+        }
+
+        .desktop-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+            width: 70px;
+            cursor: pointer;
+        }
+
+        .desktop-icon img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 5px;
+        }
+
+        .desktop-icon-text {
+            color: white;
+            text-shadow: 1px 1px 1px black;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        /* Taskbar and Start Menu */
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #c0c0c0;
+            border-top: 2px solid white;
+            padding: 2px;
+            display: flex;
+            align-items: center;
+            height: 28px;
+            z-index: 999;
+        }
+
+        .start-button {
+            display: flex;
+            align-items: center;
+            background: #c0c0c0;
+            border: 2px outset white;
+            padding: 2px 8px;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        .start-button img {
+            margin-right: 5px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .start-button:active {
+            border: 2px inset white;
+        }
+
+        .taskbar-time {
+            border: 1px inset white;
+            padding: 2px 5px;
+            margin-left: auto;
+            font-size: 11px;
+            background: #c0c0c0;
+            height: 20px;
+            line-height: 20px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .window {
+                width: 95%;
+                margin: 10px auto;
+            }
+
+            .desktop-icons {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-top: 10px;
+                padding-bottom: 40px;
+            }
+
+            .desktop-icon {
+                margin: 5px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Desktop icons for consistent navigation -->
+    <div class="desktop-icons">
+        <a href="./index.html" class="desktop-icon-link">
+            <div class="desktop-icon" tabindex="0">
+                <img src="https://i.ibb.co/C35F4Rky/sambot.png" alt="SamBot" onerror="this.onerror=null; this.src='https://placehold.co/32x32/c0c0c0/000?text=Bot';">
+                <div class="desktop-icon-text">SamBot</div>
+            </div>
+        </a>
+        <a href="./shop.html" class="desktop-icon-link">
+            <div class="desktop-icon" tabindex="0">
+                <img src="https://i.ibb.co/twspQYW8/mycom.png" alt="Shop" onerror="this.onerror=null; this.src='https://placehold.co/32x32/c0c0c0/000?text=PC';">
+                <div class="desktop-icon-text">Shop</div>
+            </div>
+        </a>
+        <a href="./form.html" class="desktop-icon-link">
+            <div class="desktop-icon" tabindex="0">
+                <img src="https://i.ibb.co/QvXH7m74/doc.png" alt="Form" onerror="this.onerror=null; this.src='https://placehold.co/32x32/c0c0c0/000?text=Form';">
+                <div class="desktop-icon-text">Form</div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Main Window -->
+    <div class="window">
+        <div class="title-bar">
+            <div>Samware95 - Submission Form</div>
+            <div class="title-bar-controls">
+                <div class="title-bar-control title-bar-minimize"></div>
+                <div class="title-bar-control title-bar-maximize"></div>
+                <div class="title-bar-control title-bar-close"></div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2>Submit Your Request</h2>
+            <p>Have a question, a feature request, or need support? Click the button below to open our submission form. We'll get back to you as soon as possible!</p>
+            
+            <!-- This button will open the YouForm popup -->
+            <button 
+                class="win98-button" 
+                data-youform-open="eh7pykkc" 
+                data-youform-position="center">
+                Open Submission Form
+            </button>
+            
+            <p style="font-size: 11px; color: #808080; margin-top: 20px;">Your feedback helps us improve Samware95 for everyone.</p>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 Samware95. All Rights Reserved.
+        </div>
+    </div>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <button class="start-button">
+            <img src="https://i.ibb.co/84rVz28T/winlogo.png" alt="Start" onerror="this.onerror=null; this.src='https://placehold.co/20x20/c0c0c0/000?text=S';">
+            Start
+        </button>
+        <div class="taskbar-time" id="taskbar-time">12:00 PM</div>
+    </div>
+
+    <script>
+        // --- Sound Synthesis Setup ---
+        let soundsReady = false;
+        let clickSynth;
+
+        try {
+            clickSynth = new Tone.Synth({
+                oscillator: { type: "sine" },
+                envelope: { attack: 0.001, decay: 0.05, sustain: 0, release: 0.1 },
+                volume: -18
+            }).toDestination();
+            soundsReady = true;
+        } catch (error) {
+            console.error("Tone.js initialization failed:", error);
+        }
+
+        function playClickSound() {
+            if (!soundsReady || Tone.context.state !== 'running') return;
+            try {
+                clickSynth.triggerAttackRelease("C5", "32n", Tone.now());
+            } catch (error) {
+                 console.error("Error playing click sound:", error);
+            }
+        }
+
+        // --- Event Listeners ---
+        document.body.addEventListener('click', function(event) {
+            const target = event.target;
+            const interactiveSelector = 'button, .win98-button, .desktop-icon-link, .start-button, .title-bar-control, a';
+
+            if (target.matches(interactiveSelector) || target.closest(interactiveSelector)) {
+                 if (Tone.context.state !== 'running') {
+                     Tone.start().then(() => {
+                         console.log("AudioContext started on user click.");
+                         playClickSound();
+                     }).catch(e => console.error("AudioContext could not start:", e));
+                 } else {
+                    playClickSound();
+                 }
+            }
+        });
+
+        // --- Initialization on Window Load ---
+        window.onload = function() {
+            // Update the time on the taskbar
+            function updateTime() {
+                let now = new Date();
+                let timeString = now.toLocaleTimeString([], { hour: 'numeric', minute:'2-digit' });
+                const timeElement = document.getElementById("taskbar-time");
+                if (timeElement) {
+                    timeElement.innerText = timeString;
+                }
+            }
+            updateTime();
+            setInterval(updateTime, 30000); // Update every 30 seconds
+            
+            // Basic window controls (close, etc.)
+            document.querySelector('.title-bar-close').addEventListener('click', () => {
+                alert('This would close the application window.');
+            });
+        };
+    </script>
+</body>
+</html>
